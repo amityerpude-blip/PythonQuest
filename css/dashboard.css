@@ -1,1 +1,376 @@
+/* ==========================================
+   Python Quest Dashboard
+   Version 1.0
+========================================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(135deg,#071426,#0E2238,#132F4C);
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+/* ================= HEADER ================= */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 8%;
+
+    background:rgba(0,0,0,.25);
+
+    backdrop-filter:blur(12px);
+
+    position:sticky;
+
+    top:0;
+
+}
+
+.logo{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#FFD54F;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:25px;
+
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#FFD54F;
+
+}
+
+/* ================= WELCOME ================= */
+
+.welcome{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+.welcome h1{
+
+    font-size:48px;
+
+}
+
+.welcome span{
+
+    color:#FFD54F;
+
+}
+
+.welcome p{
+
+    margin-top:15px;
+
+    color:#d6d6d6;
+
+    font-size:18px;
+
+}
+
+/* ================= STATS ================= */
+
+.stats{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card h2{
+
+    color:#FFD54F;
+
+    margin-bottom:10px;
+
+}
+
+/* ================= XP BAR ================= */
+
+.xp-container{
+
+    width:100%;
+
+    height:14px;
+
+    background:#263238;
+
+    border-radius:20px;
+
+    margin-top:15px;
+
+    overflow:hidden;
+
+}
+
+.xp-bar{
+
+    width:25%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#00E676,#69F0AE);
+
+    border-radius:20px;
+
+    transition:1s;
+
+}
+
+/* ================= MODULES ================= */
+
+.modules{
+
+    width:90%;
+
+    margin:70px auto;
+
+}
+
+.modules h2{
+
+    text-align:center;
+
+    font-size:36px;
+
+    margin-bottom:35px;
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+
+}
+
+.module{
+
+    background:rgba(255,255,255,.08);
+
+    padding:25px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.module:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.module h3{
+
+    margin:15px 0;
+
+}
+
+.module button{
+
+    margin-top:20px;
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    background:#6C63FF;
+
+    color:white;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.module button:hover{
+
+    background:#564BFF;
+
+}
+
+.locked{
+
+    opacity:.55;
+
+}
+
+.locked button{
+
+    background:#555;
+
+    cursor:not-allowed;
+
+}
+
+.unlocked{
+
+    border:2px solid #00E676;
+
+}
+
+/* ================= ACTION ================= */
+
+.actions{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+#continueBtn{
+
+    padding:18px 35px;
+
+    font-size:20px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#FF9800;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#continueBtn:hover{
+
+    transform:scale(1.05);
+
+    background:#FB8C00;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#bbbbbb;
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+header{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.welcome h1{
+
+font-size:34px;
+
+}
+
+.modules h2{
+
+font-size:28px;
+
+}
+
+}
