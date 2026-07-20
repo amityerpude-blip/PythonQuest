@@ -1,0 +1,204 @@
+/*==================================================
+        Python Quest Coding Lab
+==================================================*/
+
+.editor-card,
+.output-card,
+.mission-card,
+.reward-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin:30px 0;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.editor-card h2,
+.output-card h2,
+.mission-card h2,
+.reward-card h2{
+
+    color:#FFD54F;
+
+    margin-bottom:20px;
+
+}
+
+/*==========================
+      CODE EDITOR
+==========================*/
+
+#editor{
+
+    width:100%;
+
+    height:350px;
+
+    background:#1E1E1E;
+
+    color:#D4D4D4;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    font-size:16px;
+
+    font-family:Consolas,monospace;
+
+    resize:vertical;
+
+    outline:none;
+
+    line-height:1.6;
+
+}
+
+/*==========================
+      BUTTONS
+==========================*/
+
+.button-row{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+
+}
+
+.button-row button{
+
+    flex:1;
+
+    min-width:160px;
+
+}
+
+/*==========================
+      OUTPUT
+==========================*/
+
+#output{
+
+    background:#000;
+
+    color:#00FF66;
+
+    min-height:220px;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    overflow:auto;
+
+    font-family:Consolas,monospace;
+
+    font-size:15px;
+
+    white-space:pre-wrap;
+
+}
+
+/*==========================
+      EXAMPLE BOX
+==========================*/
+
+.example{
+
+    margin-top:20px;
+
+    background:#102B46;
+
+    border-left:5px solid #FFD54F;
+
+    border-radius:10px;
+
+    padding:15px;
+
+}
+
+.example pre{
+
+    margin-top:10px;
+
+    color:#00E676;
+
+    overflow:auto;
+
+}
+
+/*==========================
+      REWARD
+==========================*/
+
+.reward-card ul{
+
+    list-style:none;
+
+}
+
+.reward-card li{
+
+    padding:12px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+/*==========================
+      HOVER
+==========================*/
+
+.editor-card:hover,
+.output-card:hover,
+.mission-card:hover,
+.reward-card:hover{
+
+    transform:translateY(-5px);
+
+    transition:.3s;
+
+}
+
+/*==========================
+      MOBILE
+==========================*/
+
+@media(max-width:768px){
+
+#editor{
+
+height:260px;
+
+font-size:14px;
+
+}
+
+.button-row{
+
+flex-direction:column;
+
+}
+
+.button-row button{
+
+width:100%;
+
+}
+
+}
