@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Python Quest Dashboard</title>
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+🐉 Python Quest
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="map.html">Adventure Map</a>
+
+<a href="code.html">Coding Lab</a>
+
+</nav>
+
+</header>
+
+<section class="welcome">
+
+<h1>
+
+Welcome,
+<span id="playerName">Dino</span>
+
+</h1>
+
+<p>
+
+Continue your magical coding journey.
+
+Every completed mission unlocks a new power.
+
+</p>
+
+</section>
+
+<section class="stats">
+
+<div class="card">
+
+<h2>⭐ Level</h2>
+
+<h1 id="levelValue">
+
+1
+
+</h1>
+
+</div>
+
+<div class="card">
+
+<h2>✨ XP</h2>
+
+<h1>
+
+<span id="xpValue">
+
+120
+
+</span>
+
+ / 500
+
+</h1>
+
+<div class="xp-container">
+
+<div id="xpBar" class="xp-bar">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🪙 Coins</h2>
+
+<h1 id="coinValue">
+
+150
+
+</h1>
+
+</div>
+
+<div class="card">
+
+<h2>❤️ Lives</h2>
+
+<h1 id="lifeValue">
+
+5
+
+</h1>
+
+</div>
+
+</section>
+
+<section class="modules">
+
+<h2>
+
+Adventure Worlds
+
+</h2>
+
+<div class="grid">
+
+<div class="module unlocked">
+
+🏡
+
+<h3>
+
+Python Village
+
+</h3>
+
+<p>
+
+Start your journey.
+
+</p>
+
+<button>
+
+Play
+
+</button>
+
+</div>
+
+<div class="module locked">
+
+🌲
+
+<h3>
+
+Condition Forest
+
+</h3>
+
+<p>
+
+Locked
+
+</p>
+
+<button disabled>
+
+Locked
+
+</button>
+
+</div>
+
+<div class="module locked">
+
+🏔
+
+<h3>
+
+Loop Mountain
+
+</h3>
+
+<p>
+
+Locked
+
+</p>
+
+<button disabled>
+
+Locked
+
+</button>
+
+</div>
+
+<div class="module locked">
+
+📜
+
+<h3>
+
+Text File Library
+
+</h3>
+
+<p>
+
+Locked
+
+</p>
+
+<button disabled>
+
+Locked
+
+</button>
+
+</div>
+
+<div class="module locked">
+
+🦁
+
+<h3>
+
+CSV Kingdom
+
+</h3>
+
+<p>
+
+Locked
+
+</p>
+
+<button disabled>
+
+Locked
+
+</button>
+
+</div>
+
+<div class="module locked">
+
+🐼
+
+<h3>
+
+Pandas City
+
+</h3>
+
+<p>
+
+Locked
+
+</p>
+
+<button disabled>
+
+Locked
+
+</button>
+
+</div>
+
+<div class="module locked">
+
+🐉
+
+<h3>
+
+SQL Dragon Cave
+
+</h3>
+
+<p>
+
+Locked
+
+</p>
+
+<button disabled>
+
+Locked
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="actions">
+
+<button id="continueBtn">
+
+🚀 Continue Adventure
+
+</button>
+
+</section>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
