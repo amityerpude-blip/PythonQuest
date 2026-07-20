@@ -1,0 +1,308 @@
+/* ==========================================
+   Python Quest Adventure Map
+   Version 1.0
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(135deg,#041423,#0C233D,#14395C);
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+/*================ HEADER ================*/
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 8%;
+
+    background:rgba(0,0,0,.25);
+
+    backdrop-filter:blur(12px);
+
+}
+
+.logo{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    color:#FFD54F;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:25px;
+
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#FFD54F;
+
+}
+
+/*================ HERO ================*/
+
+.hero{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+.hero h1{
+
+    font-size:48px;
+
+    color:#FFD54F;
+
+}
+
+.hero p{
+
+    margin-top:20px;
+
+    max-width:850px;
+
+    margin-left:auto;
+
+    margin-right:auto;
+
+    line-height:1.8;
+
+    color:#dddddd;
+
+}
+
+/*================ MAP ================*/
+
+.worldMap{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+    padding-bottom:60px;
+
+}
+
+.world{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.world:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.emoji{
+
+    font-size:60px;
+
+}
+
+.world h2{
+
+    margin:20px 0 10px;
+
+    color:#FFD54F;
+
+}
+
+.world p{
+
+    color:#dddddd;
+
+    min-height:55px;
+
+}
+
+.world button{
+
+    margin-top:20px;
+
+    padding:12px 28px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#6C63FF;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:16px;
+
+}
+
+.world button:hover{
+
+    background:#5145FF;
+
+}
+
+.unlocked{
+
+    border:2px solid #00E676;
+
+}
+
+.locked{
+
+    opacity:.45;
+
+}
+
+.locked button{
+
+    background:#555;
+
+    cursor:not-allowed;
+
+}
+
+/*================ LEGEND ================*/
+
+.legend{
+
+    width:90%;
+
+    margin:40px auto;
+
+}
+
+.legend h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:#FFD54F;
+
+}
+
+.legendBox{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+}
+
+.legendBox div{
+
+    background:rgba(255,255,255,.08);
+
+    padding:18px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+}
+
+/*================ FOOTER ================*/
+
+footer{
+
+    padding:30px;
+
+    text-align:center;
+
+    color:#cccccc;
+
+}
+
+/*================ MOBILE ================*/
+
+@media(max-width:768px){
+
+header{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.hero h1{
+
+font-size:36px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+}
+
+}
