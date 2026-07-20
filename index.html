@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quest | Learn Python Through Adventures</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            font-family:'Poppins',sans-serif;
+
+            background:linear-gradient(135deg,#071426,#0f2942,#112d4e);
+
+            color:white;
+
+            min-height:100vh;
+
+        }
+
+        nav{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            padding:20px 8%;
+
+            background:rgba(0,0,0,.25);
+
+            backdrop-filter:blur(10px);
+
+        }
+
+        .logo{
+
+            font-size:32px;
+
+            font-weight:700;
+
+            color:#FFD54F;
+
+        }
+
+        nav ul{
+
+            display:flex;
+
+            list-style:none;
+
+            gap:25px;
+
+        }
+
+        nav a{
+
+            color:white;
+
+            text-decoration:none;
+
+            font-weight:500;
+
+        }
+
+        .hero{
+
+            display:flex;
+
+            flex-direction:column;
+
+            justify-content:center;
+
+            align-items:center;
+
+            text-align:center;
+
+            padding:80px 20px;
+
+        }
+
+        .hero h1{
+
+            font-size:56px;
+
+            margin-bottom:20px;
+
+        }
+
+        .hero span{
+
+            color:#FFD54F;
+
+        }
+
+        .hero p{
+
+            max-width:750px;
+
+            font-size:20px;
+
+            line-height:1.8;
+
+            color:#ddd;
+
+        }
+
+        .buttons{
+
+            margin-top:40px;
+
+        }
+
+        .btn{
+
+            display:inline-block;
+
+            padding:15px 30px;
+
+            margin:10px;
+
+            border-radius:50px;
+
+            text-decoration:none;
+
+            font-size:18px;
+
+            transition:.3s;
+
+        }
+
+        .primary{
+
+            background:#6C63FF;
+
+            color:white;
+
+        }
+
+        .primary:hover{
+
+            transform:translateY(-5px);
+
+            background:#574BFF;
+
+        }
+
+        .secondary{
+
+            border:2px solid white;
+
+            color:white;
+
+        }
+
+        .secondary:hover{
+
+            background:white;
+
+            color:#222;
+
+        }
+
+        .features{
+
+            display:grid;
+
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+            gap:25px;
+
+            padding:60px 8%;
+
+        }
+
+        .card{
+
+            background:rgba(255,255,255,.08);
+
+            padding:25px;
+
+            border-radius:18px;
+
+            text-align:center;
+
+            transition:.3s;
+
+        }
+
+        .card:hover{
+
+            transform:translateY(-8px);
+
+        }
+
+        footer{
+
+            padding:30px;
+
+            text-align:center;
+
+            color:#bbb;
+
+        }
+
+        @media(max-width:768px){
+
+            .hero h1{
+
+                font-size:38px;
+
+            }
+
+            nav{
+
+                flex-direction:column;
+
+                gap:15px;
+
+            }
+
+            nav ul{
+
+                flex-wrap:wrap;
+
+                justify-content:center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+🐉 Python Quest
+
+</div>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="map.html">Adventure Map</a></li>
+
+<li><a href="code.html">Coding Lab</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h1>
+
+Learn Python Through <span>Stories & Adventures</span>
+
+</h1>
+
+<p>
+
+Join Dino on an epic adventure where every Python concept is taught through comics, animations, coding missions, quizzes, and magical challenges. Unlock new worlds, earn XP, collect rewards, and become a Python Master!
+
+</p>
+
+<div class="buttons">
+
+<a href="dashboard.html" class="btn primary">
+
+🚀 Start Adventure
+
+</a>
+
+<a href="map.html" class="btn secondary">
+
+🗺 Explore World
+
+</a>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="card">
+
+<h2>📖 Comics</h2>
+
+<p>
+
+Learn every topic through engaging comic stories featuring Dino and his magical mentors.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🎬 Animations</h2>
+
+<p>
+
+Watch concept-based animations before attempting coding challenges.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>💻 Coding Lab</h2>
+
+<p>
+
+Write and execute Python code directly in your browser using Pyodide.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🏆 Gamification</h2>
+
+<p>
+
+Earn XP, badges, coins, and unlock exciting new adventures.
+
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Python Quest | Created by Amit Yerpude
+
+</footer>
+
+</body>
+
+</html>
