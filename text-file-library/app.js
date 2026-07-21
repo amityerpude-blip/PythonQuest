@@ -325,19 +325,13 @@ code;
 
 function initializeQuiz(){
 
-    const submit=document.getElementById("submitQuiz");
+    // Load questions if quiz.js is available
 
-    if(!submit) return;
+    if(typeof loadQuiz === "function"){
 
-    submit.onclick=function(){
+        loadQuiz();
 
-        alert(
-
-"Quiz Engine Coming Next."
-
-        );
-
-    };
+    }
 
 }
 
