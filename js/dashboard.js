@@ -1,193 +1,386 @@
-/*==========================================
-        Python Quest Dashboard
-        Version 2.0
-==========================================*/
+/*=========================================================
+                PYTHON QUEST
+              DASHBOARD CONTROLLER
+        Adventure Hub Version 2.0
+=========================================================*/
 
-// ---------- Load Player Data ----------
-let player = JSON.parse(localStorage.getItem("pythonQuestPlayer"));
+const TOTAL_WORLDS = 13;
 
-if (!player) {
+/*=========================================================
+                PAGE LOAD
+=========================================================*/
 
-    player = {
+document.addEventListener("DOMContentLoaded", () => {
 
-        name: "Dino Explorer",
+    loadPlayer();
 
-        level: 1,
+    updateOverallProgress();
 
-        xp: 0,
+    updateWorldStatus();
 
-        coins: 0,
+    initializeButtons();
 
-        badges: 0,
+    showDailyMission();
 
-        completedWorlds: [],
+    updateContinueButton();
 
-        unlockedWorlds: [
+    console.log("🌍 Adventure Hub Loaded");
 
-            "python-village",
-            "condition-forest",
-            "loop-mountain",
-            "text-file-library",
-            "csv-kingdom",
-            "pandas-city",
-            "sql-dragon",
-            "ai-temple"
+});
 
-        ],
 
-        streak: 1
+/*=========================================================
+                LOAD PLAYER
+=========================================================*/
 
-    };
+function loadPlayer(){
 
-    savePlayer();
+    let player = JSON.parse(
+        localStorage.getItem("pythonQuestPlayer")
+    );
+
+    if(!player){
+
+        player = {
+
+            xp:0,
+
+            coins:0,
+
+            badges:0,
+
+            level:1,
+
+            completedWorlds:[]
+
+        };
+
+        localStorage.setItem(
+
+            "pythonQuestPlayer",
+
+            JSON.stringify(player)
+
+        );
+
+    }
+
+    updatePlayerStats(player);
 
 }
 
-// ---------- Save ----------
-function savePlayer() {
 
-    localStorage.setItem(
+/*=========================================================
+                PLAYER STATS
+=========================================================*/
 
-        "pythonQuestPlayer",
+function updatePlayerStats(player){
 
-        JSON.stringify(player)
+    setValue("xp",player.xp);
+
+    setValue("coins",player.coins);
+
+    setValue("badges",player.badges);
+
+    setValue("playerLevel",player.level);
+
+}
+
+
+function setValue(id,value){
+
+    const element=document.getElementById(id);
+
+    if(element){
+
+        element.textContent=value;
+
+    }
+
+}
+
+
+/*=========================================================
+                PROGRESS BAR
+=========================================================*/
+
+function updateOverallProgress(){
+
+    const player=JSON.parse(
+
+        localStorage.getItem("pythonQuestPlayer")
 
     );
 
-}
+    if(!player) return;
 
-// ---------- Update Dashboard ----------
-function updateDashboard() {
+    let completed=0;
 
-    document.getElementById("xp").innerText = player.xp;
+    if(player.completedWorlds){
 
-    document.getElementById("coins").innerText = player.coins;
+        completed=player.completedWorlds.length;
 
-    document.getElementById("badges").innerText = player.badges;
+    }
 
-    document.getElementById("playerLevel").innerText = player.level;
+    const percent=(completed/TOTAL_WORLDS)*100;
 
-    calculateProgress();
+    const progress=document.getElementById("overallProgress");
 
-}
+    if(progress){
 
-updateDashboard();
+        progress.style.width=percent+"%";
 
-// ---------- Progress ----------
-function calculateProgress() {
-
-    const totalWorlds = 8;
-
-    const completed = player.completedWorlds.length;
-
-    const percent = (completed / totalWorlds) * 100;
-
-    document.getElementById("overallProgress").style.width =
-
-        percent + "%";
+    }
 
 }
 
-// ---------- XP ----------
-function addXP(value) {
 
-    player.xp += value;
+/*=========================================================
+            WORLD STATUS
+=========================================================*/
 
-    checkLevel();
+function updateWorldStatus(){
 
-    savePlayer();
+    const cards=document.querySelectorAll(".module");
 
-    updateDashboard();
+    cards.forEach((card,index)=>{
 
-}
+        const button=card.querySelector("a");
 
-// ---------- Coins ----------
-function addCoins(value) {
+        if(!button) return;
 
-    player.coins += value;
+        if(index<=5){
 
-    savePlayer();
+            button.innerHTML="▶ Enter";
 
-    updateDashboard();
+        }
 
-}
+        else{
 
-// ---------- Badges ----------
-function addBadge() {
+            button.innerHTML="🔒 Coming Soon";
 
-    player.badges++;
+        }
 
-    savePlayer();
-
-    updateDashboard();
+    });
 
 }
 
-// ---------- Level System ----------
-function checkLevel() {
 
-    const required = player.level * 500;
+/*=========================================================
+            BUTTONS
+=========================================================*/
 
-    if (player.xp >= required) {
+function initializeButtons(){
 
-        player.level++;
+    document
+
+    .querySelectorAll(".module a")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",function(){
+
+            localStorage.setItem(
+
+                "lastWorld",
+
+                this.getAttribute("href")
+
+            );
+
+        });
+
+    });
+
+}
+
+
+/*=========================================================
+            CONTINUE BUTTON
+=========================================================*/
+
+function continueAdventure(){
+
+    const last=
+
+    localStorage.getItem("lastWorld");
+
+    if(last){
+
+        window.location.href=last;
+
+    }
+
+    else{
+
+        window.location.href=
+
+        "text-file-library/index.html";
+
+    }
+
+}
+
+
+function updateContinueButton(){
+
+    const btn=document.getElementById("continueAdventure");
+
+    if(!btn) return;
+
+    btn.onclick=continueAdventure;
+
+}
+
+
+/*=========================================================
+            DAILY MISSION
+=========================================================*/
+
+function showDailyMission(){
+
+    const mission=document.getElementById("dailyMission");
+
+    if(!mission) return;
+
+    mission.innerHTML=`
+
+        <h3>📅 Today's Mission</h3>
+
+        <p>
+
+        Complete one Coding Challenge
+
+        </p>
+
+        <p>
+
+        Reward:
+
+        ⭐100 XP &nbsp;
+
+        🪙50 Coins
+
+        </p>
+
+    `;
+
+}
+
+
+/*=========================================================
+            COMPLETE WORLD
+=========================================================*/
+
+function completeWorld(worldName){
+
+    let player=JSON.parse(
+
+        localStorage.getItem("pythonQuestPlayer")
+
+    );
+
+    if(!player.completedWorlds){
+
+        player.completedWorlds=[];
+
+    }
+
+    if(
+
+        !player.completedWorlds.includes(worldName)
+
+    ){
+
+        player.completedWorlds.push(worldName);
+
+        player.xp+=200;
+
+        player.coins+=100;
+
+        player.badges++;
+
+        player.level=Math.floor(player.xp/500)+1;
+
+        localStorage.setItem(
+
+            "pythonQuestPlayer",
+
+            JSON.stringify(player)
+
+        );
+
+        loadPlayer();
+
+        updateOverallProgress();
 
         alert(
-            "🎉 Level Up!\n\nYou reached Level " +
-            player.level
+
+`🏆 Congratulations!
+
+World Completed
+
+⭐ +200 XP
+
+🪙 +100 Coins
+
+🏅 +1 Badge`
+
         );
 
     }
 
 }
 
-// ---------- Complete World ----------
-function completeWorld(worldID) {
 
-    if (!player.completedWorlds.includes(worldID)) {
+/*=========================================================
+            MUSIC
+=========================================================*/
 
-        player.completedWorlds.push(worldID);
+let musicOn=true;
+
+function toggleMusic(){
+
+    musicOn=!musicOn;
+
+    alert(
+
+        musicOn ?
+
+        "🎵 Background Music ON"
+
+        :
+
+        "🔇 Background Music OFF"
+
+    );
+
+}
+
+
+/*=========================================================
+            SAVE
+=========================================================*/
+
+window.addEventListener(
+
+    "beforeunload",
+
+    ()=>{
+
+        console.log(
+
+            "Progress Saved"
+
+        );
 
     }
 
-    addXP(200);
+);
 
-    addCoins(100);
 
-    addBadge();
+/*=========================================================
+                END
+=========================================================*/
 
-    savePlayer();
-
-    updateDashboard();
-
-}
-
-// ---------- Open World ----------
-function openWorld(folder) {
-
-    window.location.href = folder + "/index.html";
-
-}
-
-// ---------- Developer Helpers ----------
-function resetGame() {
-
-    if (confirm("Reset all progress?")) {
-
-        localStorage.removeItem("pythonQuestPlayer");
-
-        location.reload();
-
-    }
-
-}
-
-function developerReward() {
-
-    addXP(500);
-
-    addCoins(500);
-
-}
-
-console.log("✅ Python Quest Dashboard Loaded");
+console.log("🚀 Python Quest Dashboard Ready");
