@@ -281,7 +281,19 @@ function initializeVideo(){
     };
 
 }
+const begin=document.getElementById("beginAdventure");
 
+if(begin){
+
+begin.onclick=function(){
+
+currentSection=1;
+
+showSection(currentSection);
+
+};
+
+}
 
 /*=========================================================
             COMIC
