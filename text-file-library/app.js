@@ -3,14 +3,15 @@
         TEXT FILE LIBRARY CONTROLLER
 =========================================================*/
 
-const sections = [
+const sections=[
 
-    "comicSection",
-    "animationSection",
-    "notesSection",
-    "codingSection",
-    "quizSection",
-    "rewardSection"
+"storySection",
+"comicSection",
+"animationSection",
+"notesSection",
+"codingSection",
+"quizSection",
+"rewardSection"
 
 ];
 
