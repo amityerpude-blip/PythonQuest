@@ -1,38 +1,90 @@
-/*=========================================
-        PYTHON QUEST FLIPBOOK
-=========================================*/
+/*====================================================
+        PYTHON QUEST - FLIPBOOK
+====================================================*/
 
-const totalPages = 25;   // Change this to your total number of comic pages
-
+const totalPages = 25;   // Total comic pages
 let currentPage = 1;
 
-function loadFlipbook(){
+/*====================================================
+        LOAD COMIC PAGE
+====================================================*/
 
-    console.log("Loading:", "comics/t" + currentPage + ".png");
+function loadFlipbook() {
 
     const flipbook = document.getElementById("flipbook");
 
+    if (!flipbook) {
+        console.error("❌ Flipbook container not found!");
+        return;
+    }
+
+    const imagePath = `comics/t${currentPage}.png`;
+
+    console.log("Loading:", imagePath);
+
     flipbook.innerHTML = `
-        <img
-            id="comicImage"
-            src="comics/t${currentPage}.png"
-            alt="Comic Page ${currentPage}"
-            style="
-                width:100%;
-                max-height:700px;
-                object-fit:contain;
-                border-radius:15px;
-            "
-        >
+        <div class="comicViewer">
 
-        <h3 style="margin-top:15px;text-align:center;">
-            Page ${currentPage} / ${totalPages}
-        </h3>
+            <img
+                id="comicImage"
+                src="${imagePath}"
+                alt="Comic Page ${currentPage}"
+                style="
+                    width:100%;
+                    max-width:900px;
+                    display:block;
+                    margin:auto;
+                    border-radius:15px;
+                    box-shadow:0 0 20px rgba(0,0,0,.4);
+                "
+            >
+
+            <h3 style="
+                text-align:center;
+                margin-top:15px;
+                color:#FFD54F;
+            ">
+                Page ${currentPage} / ${totalPages}
+            </h3>
+
+        </div>
     `;
-}
-function nextComic(){
 
-    if(currentPage < totalPages){
+    const img = document.getElementById("comicImage");
+
+    img.onload = function () {
+        console.log("✅ Image Loaded:", imagePath);
+    };
+
+    img.onerror = function () {
+
+        console.error("❌ Cannot load:", imagePath);
+
+        flipbook.innerHTML = `
+            <div style="
+                text-align:center;
+                padding:60px;
+                color:white;
+            ">
+                <h2>Image Not Found</h2>
+
+                <p>${imagePath}</p>
+
+                <p>Check the comics folder.</p>
+            </div>
+        `;
+
+    };
+
+}
+
+/*====================================================
+        NEXT PAGE
+====================================================*/
+
+function nextComic() {
+
+    if (currentPage < totalPages) {
 
         currentPage++;
 
@@ -42,9 +94,13 @@ function nextComic(){
 
 }
 
-function previousComic(){
+/*====================================================
+        PREVIOUS PAGE
+====================================================*/
 
-    if(currentPage > 1){
+function previousComic() {
+
+    if (currentPage > 1) {
 
         currentPage--;
 
@@ -54,20 +110,47 @@ function previousComic(){
 
 }
 
-window.addEventListener("load", () => {
+/*====================================================
+        INITIALIZE
+====================================================*/
 
-    setTimeout(() => {
+window.onload = function () {
 
-        loadFlipbook();
+    console.log("📖 Flipbook Initialized");
 
-    }, 100);
+    loadFlipbook();
 
-    document
-        .getElementById("nextComic")
-        .addEventListener("click", nextComic);
+    const next = document.getElementById("nextComic");
+    const previous = document.getElementById("previousComic");
 
-    document
-        .getElementById("previousComic")
-        .addEventListener("click", previousComic);
+    if (next) {
 
-});
+        next.addEventListener("click", nextComic);
+
+    }
+
+    if (previous) {
+
+        previous.addEventListener("click", previousComic);
+
+    }
+
+    /* Keyboard Support */
+
+    document.addEventListener("keydown", function (e) {
+
+        if (e.key === "ArrowRight") {
+
+            nextComic();
+
+        }
+
+        if (e.key === "ArrowLeft") {
+
+            previousComic();
+
+        }
+
+    });
+
+};
