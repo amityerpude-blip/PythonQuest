@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updatePlayerStats();
 
+    initializeComic();
+
     showSection(currentSection);
 
 });
@@ -275,22 +277,23 @@ function initializeVideo(){
             COMIC
 =========================================================*/
 
-const comicBtn=document.getElementById("startComic");
+function initializeComic(){
 
-if(comicBtn){
+    const comicBtn=document.getElementById("startComic");
 
-comicBtn.onclick=function(){
+    if(!comicBtn) return;
 
-if(typeof loadFlipbook==="function"){
+    comicBtn.onclick=function(){
 
-loadFlipbook();
+        if(typeof loadFlipbook==="function"){
+
+            loadFlipbook();
+
+        }
+
+    };
 
 }
-
-};
-
-}
-
 
 /*=========================================================
             CODING
