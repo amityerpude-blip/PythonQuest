@@ -1,319 +1,84 @@
-/*=====================================================
-    Python Quest
-    Comic Flipbook Engine
-======================================================*/
+const comicPages = [
 
-const TOTAL_PAGES = 20;
+"comics/t1.png",
+"comics/t2.png",
+"comics/t3.png",
+"comics/t4.png",
+"comics/t5.png",
+"comics/t6.png",
+"comics/t7.png",
+"comics/t8.png",
+"comics/t9.png",
+"comics/t10.png",
+"comics/t11.png",
+"comics/t12.png",
+"comics/t13.png",
+"comics/t14.png",
+"comics/t15.png"
 
-let currentPage = 1;
-let zoomLevel = 1;
+];
 
-const comicImage = document.getElementById("comicImage");
-const pageNumber = document.getElementById("pageNumber");
-const totalPages = document.getElementById("totalPages");
+let currentPage = 0;
 
-const progressBar = document.getElementById("lessonProgress");
+function loadFlipbook(){
 
-const finishButton = document.getElementById("finishComic");
+    const flipbook = document.getElementById("flipbook");
 
-totalPages.innerText = TOTAL_PAGES;
+    flipbook.innerHTML = `
 
-/*=========================================
-            INITIALIZE
-=========================================*/
+        <img
+            src="${comicPages[currentPage]}"
+            id="comicImage"
+            style="
+                width:100%;
+                max-height:700px;
+                object-fit:contain;
+                border-radius:15px;
+            "
+        >
 
-window.onload = function(){
+        <h3 style="margin-top:15px;text-align:center;">
+            Page ${currentPage+1} / ${comicPages.length}
+        </h3>
 
-    loadBookmark();
-
-    updateComic();
-
-};
-
-/*=========================================
-            UPDATE PAGE
-=========================================*/
-
-function updateComic(){
-
-    comicImage.src = "comics/page"+currentPage+".jpg";
-
-    pageNumber.innerText = currentPage;
-
-    let progress = (currentPage/TOTAL_PAGES)*100;
-
-    progressBar.style.width = progress+"%";
-
-    if(currentPage===TOTAL_PAGES){
-
-        finishButton.disabled=false;
-
-        finishButton.innerHTML="🎉 Continue to Animation";
-
-    }
-
-    saveBookmark();
+    `;
 
 }
 
-/*=========================================
-            NEXT PAGE
-=========================================*/
+function nextComic(){
 
-document
-.getElementById("nextPage")
-.addEventListener("click",()=>{
-
-    if(currentPage<TOTAL_PAGES){
+    if(currentPage < comicPages.length-1){
 
         currentPage++;
 
-        updateComic();
+        loadFlipbook();
 
     }
 
-});
+}
 
-/*=========================================
-            PREVIOUS PAGE
-=========================================*/
+function previousComic(){
 
-document
-.getElementById("prevPage")
-.addEventListener("click",()=>{
-
-    if(currentPage>1){
+    if(currentPage > 0){
 
         currentPage--;
 
-        updateComic();
-
-    }
-
-});
-
-/*=========================================
-            KEYBOARD SUPPORT
-=========================================*/
-
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="ArrowRight"){
-
-        if(currentPage<TOTAL_PAGES){
-
-            currentPage++;
-
-            updateComic();
-
-        }
-
-    }
-
-    if(e.key==="ArrowLeft"){
-
-        if(currentPage>1){
-
-            currentPage--;
-
-            updateComic();
-
-        }
-
-    }
-
-});
-
-/*=========================================
-            MOBILE SWIPE
-=========================================*/
-
-let touchStartX=0;
-let touchEndX=0;
-
-comicImage.addEventListener("touchstart",(e)=>{
-
-    touchStartX=e.changedTouches[0].screenX;
-
-});
-
-comicImage.addEventListener("touchend",(e)=>{
-
-    touchEndX=e.changedTouches[0].screenX;
-
-    handleSwipe();
-
-});
-
-function handleSwipe(){
-
-    if(touchEndX<touchStartX-50){
-
-        if(currentPage<TOTAL_PAGES){
-
-            currentPage++;
-
-            updateComic();
-
-        }
-
-    }
-
-    if(touchEndX>touchStartX+50){
-
-        if(currentPage>1){
-
-            currentPage--;
-
-            updateComic();
-
-        }
+        loadFlipbook();
 
     }
 
 }
 
-/*=========================================
-            ZOOM
-=========================================*/
+document.addEventListener("DOMContentLoaded",()=>{
 
-document
-.getElementById("zoomBtn")
-.addEventListener("click",()=>{
+    loadFlipbook();
 
-    if(zoomLevel===1){
+    document
+        .getElementById("nextComic")
+        .onclick = nextComic;
 
-        zoomLevel=1.8;
-
-    }else{
-
-        zoomLevel=1;
-
-    }
-
-    comicImage.style.transform="scale("+zoomLevel+")";
-
-    comicImage.style.transition=".4s";
+    document
+        .getElementById("previousComic")
+        .onclick = previousComic;
 
 });
-
-/*=========================================
-            FULL SCREEN
-=========================================*/
-
-document
-.getElementById("fullscreenBtn")
-.addEventListener("click",()=>{
-
-    if(comicImage.requestFullscreen){
-
-        comicImage.requestFullscreen();
-
-    }
-
-});
-
-/*=========================================
-            BOOKMARK
-=========================================*/
-
-function saveBookmark(){
-
-    localStorage.setItem(
-
-        "textFileBookmark",
-
-        currentPage
-
-    );
-
-}
-
-function loadBookmark(){
-
-    let page=localStorage.getItem(
-
-        "textFileBookmark"
-
-    );
-
-    if(page){
-
-        currentPage=parseInt(page);
-
-    }
-
-}
-
-/*=========================================
-        BOOKMARK BUTTON
-=========================================*/
-
-document
-.getElementById("bookmarkBtn")
-.addEventListener("click",()=>{
-
-    saveBookmark();
-
-    alert("📖 Bookmark Saved!");
-
-});
-
-/*=========================================
-        FINISH COMIC
-=========================================*/
-
-finishButton.addEventListener("click",()=>{
-
-    if(currentPage!==TOTAL_PAGES){
-
-        alert("Please finish reading the comic first.");
-
-        return;
-
-    }
-
-    completeComic("text-file-library");
-
-    addXP(100);
-
-    addCoins(50);
-
-    unlockAchievement("Comic Reader");
-
-    localStorage.setItem(
-
-        "TextFileComicCompleted",
-
-        "true"
-
-    );
-
-    alert(
-
-`🎉 Great Job!
-
-Comic Completed!
-
-⭐ +100 XP
-🪙 +50 Coins
-
-Animation Unlocked.`
-
-    );
-
-    location.href="animation.html";
-
-});
-
-/*=========================================
-            PRELOAD IMAGES
-=========================================*/
-
-for(let i=1;i<=TOTAL_PAGES;i++){
-
-    const img=new Image();
-
-    img.src="comics/page"+i+".jpg";
-
-}
