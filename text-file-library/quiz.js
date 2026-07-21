@@ -226,15 +226,13 @@ document.addEventListener("DOMContentLoaded", function(){
             SUBMIT QUIZ
 ====================================================*/
 
-const submitBtn=
-document.getElementById("submitQuiz");
+const submitBtn = document.getElementById("submitQuiz");
 
 if(submitBtn){
 
-submitBtn.onclick=submitQuiz;
+    submitBtn.addEventListener("click", submitQuiz);
 
 }
-
 function submitQuiz(){
 
 let score=0;
