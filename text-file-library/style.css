@@ -1,6 +1,59 @@
 /*=========================================
         TEXT FILE LIBRARY
 =========================================*/
+.storyCard{
+
+max-width:900px;
+
+margin:auto;
+
+padding:40px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+border-radius:20px;
+
+box-shadow:0 0 30px rgba(0,0,0,.35);
+
+}
+
+.masterImage{
+
+font-size:120px;
+
+margin-bottom:20px;
+
+animation:float 3s infinite;
+
+}
+
+.storyCard h1{
+
+font-size:48px;
+
+color:#FFD54F;
+
+}
+
+.storyCard h3{
+
+color:#6C63FF;
+
+margin-bottom:20px;
+
+}
+
+.storyCard p{
+
+font-size:20px;
+
+line-height:1.8;
+
+margin-bottom:30px;
+
+}
 
 /* Lesson Header */
 
