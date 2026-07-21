@@ -54,12 +54,20 @@ function previousComic(){
 
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
+window.addEventListener("load", () => {
 
-    loadFlipbook();
+    setTimeout(() => {
 
-    document.getElementById("nextComic").addEventListener("click",nextComic);
+        loadFlipbook();
 
-    document.getElementById("previousComic").addEventListener("click",previousComic);
+    }, 100);
+
+    document
+        .getElementById("nextComic")
+        .addEventListener("click", nextComic);
+
+    document
+        .getElementById("previousComic")
+        .addEventListener("click", previousComic);
 
 });
