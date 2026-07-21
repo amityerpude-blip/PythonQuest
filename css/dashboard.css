@@ -167,20 +167,46 @@ Modules
     color:#FFD54F;
 
 }
+.module .emoji {
 
-.modules{
+    font-size: 60px;
 
-    width:90%;
+    margin-bottom: 15px;
 
-    max-width:1300px;
+    display: block;
 
-    margin:auto;
+}
+.module{
 
-    display:grid;
+    background:#233247;
 
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    border-radius:20px;
 
-    gap:25px;
+    padding:30px 20px;
+
+    min-height:250px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    text-align:center;
+
+    transition:.3s;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.35);
+
+}
+
+.module:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.45);
 
 }
 
@@ -224,27 +250,31 @@ Modules
 
 .module button{
 
-    margin-top:20px;
+width:140px;
 
-    padding:12px 30px;
+padding:12px;
 
-    border:none;
+border:none;
 
-    border-radius:30px;
+border-radius:30px;
 
-    background:#6C63FF;
+background:#6C63FF;
 
-    color:white;
+color:white;
 
-    cursor:pointer;
+font-size:16px;
 
-    transition:.3s;
+cursor:pointer;
+
+transition:.3s;
 
 }
 
 .module button:hover{
 
-    background:#4D44FF;
+background:#4D44FF;
+
+transform:scale(1.05);
 
 }
 
