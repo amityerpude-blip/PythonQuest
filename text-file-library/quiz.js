@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function(){
     loadQuiz();
 
 });
-window.loadQuiz = loadQuiz;
+
 
 /*====================================================
             SUBMIT QUIZ
@@ -403,7 +403,7 @@ alert(
 "+1 Badge"
 
 );
-
+window.loadQuiz = loadQuiz;
 }
 
 console.log("Quiz Loaded Successfully");
