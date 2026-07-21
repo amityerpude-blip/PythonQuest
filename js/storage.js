@@ -1,109 +1,76 @@
-/*=====================================================
-    Python Quest Storage Manager
-    Version : 1.0
-=====================================================*/
+/*==========================================
+        Python Quest Storage Engine
+        Version 2.0
+==========================================*/
 
 const STORAGE_KEY = "pythonQuestPlayer";
 
-/*=========================================
-    Default Player Data
-=========================================*/
+/*==========================================
+        DEFAULT PLAYER
+==========================================*/
 
 const DEFAULT_PLAYER = {
 
-    profile: {
+    name: "Dino Explorer",
 
-        name: "Dino",
+    level: 1,
 
-        avatar: "🦖",
+    xp: 0,
 
-        level: 1,
+    coins: 0,
 
-        xp: 0,
+    badges: 0,
 
-        coins: 100,
+    streak: 1,
 
-        lives: 5
+    lastLogin: "",
 
-    },
+    completedWorlds: [],
 
-    progress: {
-
-        comics: [],
-
-        animations: [],
-
-        quizzes: [],
-
-        coding: []
-
-    },
+    achievements: [],
 
     unlockedWorlds: [
-    "python-village",
-    "condition-forest",
-    "loop-mountain",
-    "function-temple",
-    "text-file-library"
-]
 
-    achievements: [
+        "python-village",
+        "condition-forest",
+        "loop-mountain",
+        "text-file-library",
+        "csv-kingdom",
+        "pandas-city",
+        "sql-dragon",
+        "ai-temple"
 
-        "Welcome Adventurer"
-
-    ],
-
-    settings: {
-
-        theme: "dark",
-
-        sound: true,
-
-        music: true
-
-    }
+    ]
 
 };
 
-/*=========================================
-    Initialize Storage
-=========================================*/
+/*==========================================
+        LOAD PLAYER
+==========================================*/
 
-function initializePlayer(){
+function loadPlayer(){
 
-    if(!localStorage.getItem(STORAGE_KEY)){
-
-        localStorage.setItem(
-
-            STORAGE_KEY,
-
-            JSON.stringify(DEFAULT_PLAYER)
-
-        );
-
-    }
-
-}
-
-/*=========================================
-    Get Player
-=========================================*/
-
-function getPlayer(){
-
-    initializePlayer();
-
-    return JSON.parse(
+    let player = JSON.parse(
 
         localStorage.getItem(STORAGE_KEY)
 
     );
 
+    if(player==null){
+
+        player = structuredClone(DEFAULT_PLAYER);
+
+        savePlayer(player);
+
+    }
+
+    return player;
+
 }
 
-/*=========================================
-    Save Player
-=========================================*/
+/*==========================================
+        SAVE PLAYER
+==========================================*/
 
 function savePlayer(player){
 
@@ -117,49 +84,87 @@ function savePlayer(player){
 
 }
 
-/*=========================================
-    XP
-=========================================*/
+/*==========================================
+        GLOBAL PLAYER
+==========================================*/
 
-function addXP(points){
+let player = loadPlayer();
 
-    let player = getPlayer();
+/*==========================================
+        XP
+==========================================*/
 
-    player.profile.xp += points;
+function addXP(amount){
 
-    player.profile.level =
+    player.xp += amount;
 
-        Math.floor(player.profile.xp/500)+1;
-
-    savePlayer(player);
-
-}
-
-/*=========================================
-    Coins
-=========================================*/
-
-function addCoins(coins){
-
-    let player=getPlayer();
-
-    player.profile.coins += coins;
+    checkLevelUp();
 
     savePlayer(player);
 
 }
 
-/*=========================================
-    Lives
-=========================================*/
+/*==========================================
+        COINS
+==========================================*/
 
-function loseLife(){
+function addCoins(amount){
 
-    let player=getPlayer();
+    player.coins += amount;
 
-    if(player.profile.lives>0){
+    savePlayer(player);
 
-        player.profile.lives--;
+}
+
+/*==========================================
+        BADGES
+==========================================*/
+
+function addBadge(){
+
+    player.badges++;
+
+    savePlayer(player);
+
+}
+
+/*==========================================
+        LEVEL SYSTEM
+==========================================*/
+
+function checkLevelUp(){
+
+    let required = player.level * 500;
+
+    while(player.xp >= required){
+
+        player.level++;
+
+        required = player.level * 500;
+
+        showPopup(
+
+            "🎉 Level Up!\nLevel " + player.level
+
+        );
+
+    }
+
+}
+
+/*==========================================
+        COMPLETE WORLD
+==========================================*/
+
+function completeWorld(world){
+
+    if(
+
+        !player.completedWorlds.includes(world)
+
+    ){
+
+        player.completedWorlds.push(world);
 
     }
 
@@ -167,25 +172,17 @@ function loseLife(){
 
 }
 
-function gainLife(){
-
-    let player=getPlayer();
-
-    player.profile.lives++;
-
-    savePlayer(player);
-
-}
-
-/*=========================================
-    Unlock World
-=========================================*/
+/*==========================================
+        UNLOCK WORLD
+==========================================*/
 
 function unlockWorld(world){
 
-    let player=getPlayer();
+    if(
 
-    if(!player.unlockedWorlds.includes(world)){
+        !player.unlockedWorlds.includes(world)
+
+    ){
 
         player.unlockedWorlds.push(world);
 
@@ -195,35 +192,25 @@ function unlockWorld(world){
 
 }
 
-/*=========================================
-    Achievements
-=========================================*/
+/*==========================================
+        ACHIEVEMENTS
+==========================================*/
 
-function unlockAchievement(title){
+function unlockAchievement(name){
 
-    let player=getPlayer();
+    if(
 
-    if(!player.achievements.includes(title)){
+        !player.achievements.includes(name)
 
-        player.achievements.push(title);
+    ){
 
-    }
+        player.achievements.push(name);
 
-    savePlayer(player);
+        showPopup(
 
-}
+            "🏆 Achievement Unlocked\n\n" + name
 
-/*=========================================
-    Comic Progress
-=========================================*/
-
-function completeComic(id){
-
-    let player=getPlayer();
-
-    if(!player.progress.comics.includes(id)){
-
-        player.progress.comics.push(id);
+        );
 
     }
 
@@ -231,76 +218,84 @@ function completeComic(id){
 
 }
 
-/*=========================================
-    Animation Progress
-=========================================*/
+/*==========================================
+        STREAK
+==========================================*/
 
-function completeAnimation(id){
+function updateStreak(){
 
-    let player=getPlayer();
+    const today =
 
-    if(!player.progress.animations.includes(id)){
+        new Date().toDateString();
 
-        player.progress.animations.push(id);
+    if(player.lastLogin!==today){
 
-    }
+        player.streak++;
 
-    savePlayer(player);
+        player.lastLogin=today;
 
-}
-
-/*=========================================
-    Quiz Progress
-=========================================*/
-
-function completeQuiz(id){
-
-    let player=getPlayer();
-
-    if(!player.progress.quizzes.includes(id)){
-
-        player.progress.quizzes.push(id);
+        savePlayer(player);
 
     }
 
-    savePlayer(player);
-
 }
 
-/*=========================================
-    Coding Progress
-=========================================*/
-
-function completeCoding(id){
-
-    let player=getPlayer();
-
-    if(!player.progress.coding.includes(id)){
-
-        player.progress.coding.push(id);
-
-    }
-
-    savePlayer(player);
-
-}
-
-/*=========================================
-    Reset Game
-=========================================*/
+/*==========================================
+        RESET GAME
+==========================================*/
 
 function resetGame(){
 
-    localStorage.removeItem(STORAGE_KEY);
+    if(
 
-    initializePlayer();
+        confirm(
+
+            "Reset Python Quest Progress?"
+
+        )
+
+    ){
+
+        localStorage.removeItem(
+
+            STORAGE_KEY
+
+        );
+
+        location.reload();
+
+    }
 
 }
 
-/*=========================================
-    Auto Initialize
-=========================================*/
+/*==========================================
+        POPUP
+==========================================*/
 
-initializePlayer();
+function showPopup(message){
 
-console.log("🐉 Python Quest Storage Loaded");
+    alert(message);
+
+}
+
+/*==========================================
+        PLAYER SUMMARY
+==========================================*/
+
+function getPlayer(){
+
+    return player;
+
+}
+
+/*==========================================
+        DEBUG
+==========================================*/
+
+console.log(
+
+"Python Quest Storage Loaded"
+
+);
+
+console.log(player);
