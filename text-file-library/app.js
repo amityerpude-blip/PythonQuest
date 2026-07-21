@@ -95,6 +95,15 @@ function showSection(index){
     .getElementById(sections[index])
 
     .classList.add("active");
+            if(sections[index] === "comicSection"){
+
+    if(typeof loadFlipbook === "function"){
+
+        loadFlipbook();
+
+    }
+
+}
 
     document
 
