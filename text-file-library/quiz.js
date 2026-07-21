@@ -103,8 +103,7 @@ answer:"close"
             CREATE QUIZ
 ====================================================*/
 
-const quizContainer =
-document.getElementById("quizContainer");
+let quizContainer;
 
 function loadQuiz(){
 
@@ -214,7 +213,14 @@ quizContainer.innerHTML+=html;
 
 }
 
-loadQuiz();
+document.addEventListener("DOMContentLoaded", function(){
+
+    quizContainer = document.getElementById("quizContainer");
+
+    loadQuiz();
+
+});
+window.loadQuiz = loadQuiz;
 
 /*====================================================
             SUBMIT QUIZ
