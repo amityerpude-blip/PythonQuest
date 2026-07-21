@@ -8,10 +8,13 @@ let currentPage = 1;
 
 function loadFlipbook(){
 
+    console.log("Loading:", "comics/t" + currentPage + ".png");
+
     const flipbook = document.getElementById("flipbook");
 
     flipbook.innerHTML = `
         <img
+            id="comicImage"
             src="comics/t${currentPage}.png"
             alt="Comic Page ${currentPage}"
             style="
@@ -26,9 +29,7 @@ function loadFlipbook(){
             Page ${currentPage} / ${totalPages}
         </h3>
     `;
-
 }
-
 function nextComic(){
 
     if(currentPage < totalPages){
