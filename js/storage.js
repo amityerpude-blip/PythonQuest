@@ -40,10 +40,12 @@ const DEFAULT_PLAYER = {
     },
 
     unlockedWorlds: [
-
-        "python-village"
-
-    ],
+    "python-village",
+    "condition-forest",
+    "loop-mountain",
+    "function-temple",
+    "text-file-library"
+]
 
     achievements: [
 
