@@ -1,140 +1,1277 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python Quest - Adventure Hub</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="dashboard.css">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+Python Quest | Adventure Hub
+
+</title>
+
+<link
+rel="stylesheet"
+href="css/style.css">
+
+<link
+rel="stylesheet"
+href="dashboard.css">
+
 </head>
+
 <body>
+
+<!-- =========================================
+                HEADER
+========================================== -->
+
 <header>
-<div class="logo">🐍 Python Quest</div>
-<div class="playerStats">
-<span>⭐ <span id="xp">0</span></span>
-<span>🪙 <span id="coins">0</span></span>
-<span>🏆 <span id="badges">0</span></span>
-<span>Level <span id="playerLevel">1</span></span>
+
+<div class="logo">
+
+🐍 Python Quest
+
 </div>
+
+<div class="playerStats">
+
+<div class="stat">
+
+⭐
+<span id="xp">0</span>
+
+</div>
+
+<div class="stat">
+
+🪙
+<span id="coins">0</span>
+
+</div>
+
+<div class="stat">
+
+🏆
+<span id="badges">0</span>
+
+</div>
+
+<div class="stat">
+
+Level
+
+<span id="playerLevel">
+
+1
+
+</span>
+
+</div>
+
+</div>
+
 </header>
 
+<!-- =========================================
+            HERO SECTION
+========================================== -->
+
 <section class="hero">
-<h1>🌍 Adventure Hub</h1>
-<p>Continue your RPG journey through the Python worlds.</p>
-<div class="progress"><div class="progress-bar" id="overallProgress"></div></div>
+
+<h1>
+
+🌍 Adventure Hub
+
+</h1>
+
+<p>
+
+Welcome back, Explorer!
+
+Continue your magical journey through the
+Python Kingdom.
+
+Complete worlds.
+
+Earn XP.
+
+Collect badges.
+
+Become the Ultimate Python Wizard.
+
+</p>
+
+<div
+class="progress"
+style="margin-top:35px;">
+
+<div
+class="progress-bar"
+id="overallProgress">
+
+</div>
+
+</div>
+
+<div
+style="margin-top:30px;">
+
+<button
+
+id="continueAdventure"
+
+class="btn btn-success">
+
+▶ Continue Adventure
+
+</button>
+
+</div>
+
 </section>
 
-<main class="container">
-<h2 class="section-title">Choose Your World</h2>
+<!-- =========================================
+            WORLD MAP
+========================================== -->
+
+<section class="container">
+
+<h2 class="section-title">
+
+Choose Your World
+
+</h2>
+
 <div class="grid grid-4">
 
-<div class="card module">
-<span class="emoji">🏠</span>
-<h3>Python Village</h3>
-<p>Master Pyro</p>
-<a class="btn btn-primary" href="python-village/index.html">Enter</a>
-</div>
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">⚖️</span>
-<h3>Decision Dojo</h3>
-<p>Sensei Logic</p>
-<a class="btn btn-primary" href="decision-dojo/index.html">Enter</a>
+
+<div class="emoji">
+
+🏠
+
 </div>
+
+<h3>
+
+Python Village
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Master Pyro
+
+</b>
+
+</p>
+
+<p>
+
+⭐☆☆☆☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐200 XP
+
+</p>
+
+<p>
+
+🏅 Beginner Badge
+
+</p>
+
+<a
+
+href="python-village/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">🔄</span>
-<h3>Loop Labyrinth</h3>
-<p>Loop Wizard Chronos</p>
-<a class="btn btn-primary" href="loop-labyrinth/index.html">Enter</a>
+
+<div class="emoji">
+
+⚖️
+
 </div>
+
+<h3>
+
+Decision Dojo
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Sensei Logic
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐☆☆☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐300 XP
+
+</p>
+
+<p>
+
+🏅 Logic Master
+
+</p>
+
+<a
+
+href="decision-dojo/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">⚔️</span>
-<h3>Function Fortress</h3>
-<p>Sir Functionius</p>
-<a class="btn btn-primary" href="function-fortress/index.html">Enter</a>
+
+<div class="emoji">
+
+🔄
+
 </div>
+
+<h3>
+
+Loop Labyrinth
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Loop Wizard Chronos
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐☆☆☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐350 XP
+
+</p>
+
+<p>
+
+🏅 Time Keeper
+
+</p>
+
+<a
+
+href="loop-labyrinth/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">📜</span>
-<h3>Text File Library</h3>
-<p>Master Pyro</p>
-<a class="btn btn-primary" href="text-file-library/index.html">Enter</a>
+
+<div class="emoji">
+
+⚔️
+
 </div>
+
+<h3>
+
+Function Fortress
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Sir Functionius
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐☆☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐400 XP
+
+</p>
+
+<p>
+
+🏅 Function Knight
+
+</p>
+
+<a
+
+href="function-fortress/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">🔥</span>
-<h3>Phoenix Pickle Sanctuary</h3>
-<p>Phoenix Pickle</p>
-<a class="btn btn-primary" href="phoenix-pickle/index.html">Enter</a>
+
+<div class="emoji">
+
+📜
+
 </div>
+
+<h3>
+
+Text File Library
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Master Pyro
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐☆☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐400 XP
+
+</p>
+
+<p>
+
+🏅 File Wizard
+
+</p>
+
+<a
+
+href="text-file-library/index.html"
+
+class="btn btn-success">
+
+Continue
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">🦁</span>
-<h3>CSV Kingdom</h3>
-<p>Master CSV</p>
-<a class="btn btn-primary" href="csv-kingdom/index.html">Enter</a>
+
+<div class="emoji">
+
+🔥
+
 </div>
+
+<h3>
+
+Phoenix Pickle Sanctuary
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Phoenix Pickle
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐☆☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐450 XP
+
+</p>
+
+<p>
+
+🏅 Object Keeper
+
+</p>
+
+<a
+
+href="phoenix-pickle/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">🐼</span>
-<h3>Pandas Forest</h3>
-<p>Mr. Panda</p>
-<a class="btn btn-primary" href="pandas-forest/index.html">Enter</a>
+
+<div class="emoji">
+
+🦁
+
 </div>
+
+<h3>
+
+CSV Kingdom
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Master CSV
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐⭐☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐500 XP
+
+</p>
+
+<p>
+
+🏅 CSV Master
+
+</p>
+
+<a
+
+href="csv-kingdom/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">📊</span>
-<h3>Matplotlib Mountain</h3>
-<p>Lady Plot</p>
-<a class="btn btn-primary" href="matplotlib-mountain/index.html">Enter</a>
+
+<div class="emoji">
+
+🐼
+
 </div>
+
+<h3>
+
+Pandas Forest
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Mr. Panda
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐⭐☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐600 XP
+
+</p>
+
+<p>
+
+🏅 Data Explorer
+
+</p>
+
+<a
+
+href="pandas-forest/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">🔢</span>
-<h3>NumPy Cave</h3>
-<p>Master NumPy</p>
-<a class="btn btn-primary" href="numpy-cave/index.html">Enter</a>
+
+<div class="emoji">
+
+📊
+
 </div>
+
+<h3>
+
+Matplotlib Mountain
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Lady Plot
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐⭐☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐650 XP
+
+</p>
+
+<p>
+
+🏅 Chart Wizard
+
+</p>
+
+<a
+
+href="matplotlib-mountain/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">🗄️</span>
-<h3>Database Dungeon</h3>
-<p>SQL Dragon</p>
-<a class="btn btn-primary" href="database-dungeon/index.html">Enter</a>
+
+<div class="emoji">
+
+🔢
+
 </div>
+
+<h3>
+
+NumPy Cave
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Master NumPy
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐⭐☆
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐700 XP
+
+</p>
+
+<p>
+
+🏅 NumPy Master
+
+</p>
+
+<a
+
+href="numpy-cave/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">🤖</span>
-<h3>AI Temple</h3>
-<p>Sage Neural</p>
-<a class="btn btn-primary" href="ai-temple/index.html">Enter</a>
+
+<div class="emoji">
+
+🗄️
+
 </div>
+
+<h3>
+
+Database Dungeon
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+SQL Dragon
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐⭐⭐
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐800 XP
+
+</p>
+
+<p>
+
+🏅 Database Champion
+
+</p>
+
+<a
+
+href="database-dungeon/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
 
 <div class="card module">
-<span class="emoji">👑</span>
-<h3>Python Master Castle</h3>
-<p>Master Pyro</p>
-<a class="btn btn-primary" href="python-master-castle/index.html">Enter</a>
-</div>
+
+<div class="emoji">
+
+🤖
 
 </div>
 
-<section class="card" style="margin-top:30px">
-<h2>📅 Daily Mission</h2>
-<p>Complete one coding challenge today.</p>
-<p>Reward: ⭐100 XP • 🪙50 Coins</p>
+<h3>
+
+AI Temple
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Sage Neural
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐⭐⭐
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+⭐1000 XP
+
+</p>
+
+<p>
+
+🏅 AI Sage
+
+</p>
+
+<a
+
+href="ai-temple/index.html"
+
+class="btn btn-primary">
+
+Start Adventure
+
+</a>
+
+</div>
+
+<!-- ===================================== -->
+
+<div class="card module">
+
+<div class="emoji">
+
+👑
+
+</div>
+
+<h3>
+
+Python Master Castle
+
+</h3>
+
+<p>
+
+🧙 Mentor
+
+<br>
+
+<b>
+
+Master Pyro
+
+</b>
+
+</p>
+
+<p>
+
+⭐⭐⭐⭐⭐
+
+</p>
+
+<p>
+
+Reward
+
+<br>
+
+🏆 Python Master
+
+</p>
+
+<p>
+
+👑 Ultimate Champion
+
+</p>
+
+<a
+
+href="python-master-castle/index.html"
+
+class="btn btn-warning">
+
+Final Battle
+
+</a>
+
+</div>
+
+</div>
+
+<!-- =========================================
+        WORLD COMPLETION
+========================================== -->
+
+<section
+class="card"
+style="margin-top:40px;">
+
+<h2>
+
+📈 Overall Journey
+
+</h2>
+
+<p>
+
+Worlds Completed
+
+</p>
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="journeyProgress">
+
+</div>
+
+</div>
+
+<p
+style="margin-top:20px;">
+
+Complete every world to unlock the
+Python Master Castle.
+
+</p>
+
+</section>
+<!-- =========================================
+            DAILY MISSION
+========================================== -->
+
+<section
+class="card"
+style="margin-top:35px;">
+
+<div id="dailyMission">
+
+<h2>
+
+📅 Daily Mission
+
+</h2>
+
+<p>
+
+Complete one Coding Challenge today.
+
+</p>
+
+<h3>
+
+Reward
+
+</h3>
+
+<p>
+
+⭐100 XP
+
+🪙50 Coins
+
+</p>
+
+</div>
+
 </section>
 
-<section class="card" style="margin-top:20px">
-<h2>🧙 Message from Master Pyro</h2>
-<p>"Every adventure teaches a new spell. Keep exploring!"</p>
+<!-- =========================================
+        ACHIEVEMENT GALLERY
+========================================== -->
+
+<section
+class="card"
+style="margin-top:35px;">
+
+<h2>
+
+🏅 Achievement Gallery
+
+</h2>
+
+<div class="grid grid-4">
+
+<div class="badge">
+
+🏅 Beginner
+
+</div>
+
+<div class="badge">
+
+⚔ Function Knight
+
+</div>
+
+<div class="badge">
+
+📜 File Wizard
+
+</div>
+
+<div class="badge">
+
+🔥 Object Keeper
+
+</div>
+
+<div class="badge">
+
+🦁 CSV Master
+
+</div>
+
+<div class="badge">
+
+🐼 Data Explorer
+
+</div>
+
+<div class="badge">
+
+📊 Chart Wizard
+
+</div>
+
+<div class="badge">
+
+👑 Python Master
+
+</div>
+
+</div>
+
 </section>
+
+<!-- =========================================
+        MASTER PYRO MESSAGE
+========================================== -->
+
+<section
+class="card"
+style="margin-top:35px;">
+
+<h2>
+
+🧙 Message from Master Pyro
+
+</h2>
+
+<p>
+
+Welcome back, Explorer!
+
+</p>
+
+<p>
+
+You have entered the magical land of Python.
+
+Every kingdom teaches a new power.
+
+Every challenge unlocks new abilities.
+
+Every badge tells the story of your journey.
+
+</p>
+
+<p>
+
+One day...
+
+You will reach the
+
+👑 Python Master Castle
+
+and become the greatest Python Wizard.
+
+</p>
+
+</section>
+
+<!-- =========================================
+            QUICK TIPS
+========================================== -->
+
+<section
+class="card"
+style="margin-top:35px;">
+
+<h2>
+
+💡 Adventure Tips
+
+</h2>
+
+<ul>
+
+<li>
+
+📖 Read every comic before coding.
+
+</li>
+
+<li>
+
+🎬 Watch every animation carefully.
+
+</li>
+
+<li>
+
+💻 Complete every coding challenge.
+
+</li>
+
+<li>
+
+📝 Finish every quiz.
+
+</li>
+
+<li>
+
+🏆 Claim rewards after each world.
+
+</li>
+
+<li>
+
+⭐ Earn XP to level up.
+
+</li>
+
+<li>
+
+👑 Unlock every kingdom to become the Python Master.
+
+</li>
+
+</ul>
+
+</section>
+
+<!-- =========================================
+            FOOTER
+========================================== -->
+
+<footer>
+
+<div style="text-align:center;">
+
+<h3>
+
+🐍 Python Quest RPG
+
+</h3>
+
+<p>
+
+Adventure • Learn • Code • Conquer
+
+</p>
+
+<p>
+
+Version 2.0
+
+</p>
+
+</div>
+
+</footer>
+
 </main>
 
-<footer>Python Quest RPG</footer>
 <script src="dashboard.js"></script>
+
 </body>
+
 </html>
