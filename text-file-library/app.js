@@ -3,338 +3,359 @@
         Text File Library Controller
 ==================================================*/
 
-const LESSON = {
+const sections = [
+    "comicSection",
+    "animationSection",
+    "notesSection",
+    "codingSection",
+    "quizSection",
+    "rewardSection"
+];
 
-    id: "text-file-library",
+const tabs = document.querySelectorAll(".tab");
 
-    totalSteps: 6,
-
-    currentStep: 1
-
-};
+let currentSection = 0;
 
 /*=========================================
-        Initialize Lesson
+            INITIALIZE
 =========================================*/
 
 window.addEventListener("DOMContentLoaded", () => {
 
-    loadLesson();
+    loadProgress();
 
-    updateProgress();
+    initializeTabs();
 
-    checkComicCompletion();
+    initializeButtons();
+
+    updatePlayerStats();
+
+    showSection(currentSection);
 
 });
 
 /*=========================================
-        Load Lesson Progress
+            TAB CLICK
 =========================================*/
 
-function loadLesson() {
+function initializeTabs(){
 
-    const saved = localStorage.getItem("lesson-" + LESSON.id);
+    tabs.forEach((tab,index)=>{
 
-    if (saved) {
+        tab.addEventListener("click",()=>{
 
-        LESSON.currentStep = parseInt(saved);
+            currentSection=index;
+
+            showSection(currentSection);
+
+            saveProgress();
+
+        });
+
+    });
+
+}
+
+/*=========================================
+        PREVIOUS / NEXT
+=========================================*/
+
+function initializeButtons(){
+
+    document.getElementById("nextBtn")
+    .addEventListener("click",nextSection);
+
+    document.getElementById("previousBtn")
+    .addEventListener("click",previousSection);
+
+}
+
+function nextSection(){
+
+    if(currentSection<sections.length-1){
+
+        currentSection++;
+
+        showSection(currentSection);
+
+        saveProgress();
+
+    }
+
+}
+
+function previousSection(){
+
+    if(currentSection>0){
+
+        currentSection--;
+
+        showSection(currentSection);
+
+        saveProgress();
 
     }
 
 }
 
 /*=========================================
-        Save Lesson Progress
+            SHOW SECTION
 =========================================*/
 
-function saveLesson() {
+function showSection(index){
+
+    document
+    .querySelectorAll(".lessonContent")
+    .forEach(section=>{
+
+        section.classList.remove("active");
+
+    });
+
+    tabs.forEach(tab=>{
+
+        tab.classList.remove("active");
+
+    });
+
+    document
+    .getElementById(sections[index])
+    .classList.add("active");
+
+    tabs[index].classList.add("active");
+
+    updateProgress();
+
+    updateButtons();
+
+}
+
+/*=========================================
+        UPDATE BUTTONS
+=========================================*/
+
+function updateButtons(){
+
+    document.getElementById("previousBtn").disabled =
+    currentSection===0;
+
+    document.getElementById("nextBtn").disabled =
+    currentSection===sections.length-1;
+
+}
+
+/*=========================================
+            PROGRESS BAR
+=========================================*/
+
+function updateProgress(){
+
+    const percent =
+    ((currentSection+1)/sections.length)*100;
+
+    document.getElementById("lessonProgressBar")
+    .style.width = percent + "%";
+
+}
+
+/*=========================================
+        SAVE PROGRESS
+=========================================*/
+
+function saveProgress(){
 
     localStorage.setItem(
 
-        "lesson-" + LESSON.id,
+        "TextFileLessonProgress",
 
-        LESSON.currentStep
+        currentSection
 
     );
 
 }
 
 /*=========================================
-        Progress Bar
+        LOAD PROGRESS
 =========================================*/
 
-function updateProgress() {
+function loadProgress(){
 
-    const bar = document.getElementById("lessonProgress");
+    const saved =
+    localStorage.getItem("TextFileLessonProgress");
 
-    if (!bar) return;
+    if(saved!==null){
 
-    const percent =
+        currentSection=parseInt(saved);
 
-        (LESSON.currentStep / LESSON.totalSteps) * 100;
-
-    bar.style.width = percent + "%";
+    }
 
 }
 
 /*=========================================
-        Complete Comic
+        PLAYER STATS
 =========================================*/
 
-function completeComic() {
+function updatePlayerStats(){
 
-    LESSON.currentStep = 2;
+    const player = JSON.parse(
 
-    saveLesson();
+        localStorage.getItem("pythonQuestPlayer")
 
-    updateProgress();
+    );
 
-    unlockSection("animation");
+    if(!player) return;
+
+    document.getElementById("xp").textContent =
+    player.xp;
+
+    document.getElementById("coins").textContent =
+    player.coins;
+
+    document.getElementById("badges").textContent =
+    player.badges;
+
+    document.getElementById("playerLevel").textContent =
+    player.level;
 
 }
 
 /*=========================================
-        Complete Animation
+        REWARD
 =========================================*/
 
-function completeAnimation() {
+document.getElementById("claimReward")
+.addEventListener("click",claimReward);
 
-    LESSON.currentStep = 3;
+function claimReward(){
 
-    saveLesson();
+    let player = JSON.parse(
 
-    updateProgress();
+        localStorage.getItem("pythonQuestPlayer")
 
-    unlockSection("notes");
+    );
 
-}
+    if(!player){
 
-/*=========================================
-        Complete Notes
-=========================================*/
-
-function completeNotes() {
-
-    LESSON.currentStep = 4;
-
-    saveLesson();
-
-    updateProgress();
-
-    unlockSection("coding");
-
-}
-
-/*=========================================
-        Complete Coding
-=========================================*/
-
-function completeCoding() {
-
-    LESSON.currentStep = 5;
-
-    saveLesson();
-
-    updateProgress();
-
-    unlockSection("quiz");
-
-}
-
-/*=========================================
-        Complete Quiz
-=========================================*/
-
-function completeQuiz(score) {
-
-    if(score<80){
-
-        alert(
-
-        "Score at least 80% to unlock rewards."
-
-        );
+        alert("Player data not found.");
 
         return;
 
     }
 
-    LESSON.currentStep = 6;
+    player.xp += 300;
 
-    saveLesson();
+    player.coins += 150;
 
-    updateProgress();
+    player.badges += 1;
 
-    unlockSection("reward");
+    if(!player.completedWorlds.includes("text-file-library")){
 
-    finishLesson();
+        player.completedWorlds.push("text-file-library");
 
-}
+    }
 
-/*=========================================
-        Finish Lesson
-=========================================*/
+    localStorage.setItem(
 
-function finishLesson() {
+        "pythonQuestPlayer",
 
-    addXP(300);
+        JSON.stringify(player)
 
-    addCoins(150);
+    );
 
-    addBadge();
-
-    completeWorld("text-file-library");
-
-    unlockWorld("csv-kingdom");
-
-    showReward();
-
-}
-
-/*=========================================
-        Reward
-=========================================*/
-
-function showReward() {
+    updatePlayerStats();
 
     alert(
-
-`🏆 Congratulations!
+`🎉 Congratulations!
 
 You completed
-
 Text File Library
 
 ⭐ +300 XP
-
 🪙 +150 Coins
-
-🥇 Badge Earned
-
-🦁 CSV Kingdom Unlocked!`
-
+🏆 New Badge Earned`
     );
 
 }
 
 /*=========================================
-        Unlock Section
+        RUN PYTHON
 =========================================*/
 
-function unlockSection(name) {
+document.getElementById("runCode")
+.addEventListener("click",()=>{
 
-    const buttons =
+    const output =
+    document.getElementById("output");
 
-        document.querySelectorAll(".lesson-menu button");
+    output.textContent =
+`Pyodide integration coming next...
 
-    switch(name){
+Your Python code:
 
-        case "animation":
+-----------------------
 
-            buttons[1].disabled=false;
+` +
+document.getElementById("pythonCode").value;
 
-            break;
+});
 
-        case "notes":
+/*=========================================
+        QUIZ
+=========================================*/
 
-            buttons[2].disabled=false;
+document.getElementById("submitQuiz")
+.addEventListener("click",()=>{
 
-            break;
+    alert(
 
-        case "coding":
+"Quiz Engine will be added in the next step."
 
-            buttons[3].disabled=false;
+    );
 
-            break;
+});
 
-        case "quiz":
+/*=========================================
+        COMIC
+=========================================*/
 
-            buttons[4].disabled=false;
+document.getElementById("startComic")
+.addEventListener("click",()=>{
 
-            break;
+    if(typeof loadFlipbook==="function"){
 
-        case "reward":
+        loadFlipbook();
 
-            buttons[5].disabled=false;
+    }else{
 
-            break;
+        alert("Flipbook Loaded");
 
     }
 
-}
+});
 
 /*=========================================
-        Comic Check
+        VIDEO COMPLETE
 =========================================*/
 
-function checkComicCompletion(){
+const video =
+document.getElementById("lessonVideo");
 
-    if(localStorage.getItem("TextFileComicCompleted")){
+if(video){
 
-        unlockSection("animation");
+    video.addEventListener("ended",()=>{
 
-    }
+        alert(
 
-}
-
-/*=========================================
-        Navigation
-=========================================*/
-
-function gotoAnimation(){
-
-    window.location.href="animation.html";
-
-}
-
-function gotoNotes(){
-
-    window.location.href="notes.html";
-
-}
-
-function gotoCoding(){
-
-    window.location.href="coding.html";
-
-}
-
-function gotoQuiz(){
-
-    window.location.href="quiz.html";
-
-}
-
-function gotoReward(){
-
-    window.location.href="reward.html";
-
-}
-
-/*=========================================
-        Reset Lesson
-=========================================*/
-
-function resetLesson(){
-
-    if(confirm("Restart this lesson?")){
-
-        localStorage.removeItem(
-
-            "lesson-" + LESSON.id
+"🎬 Animation Completed!"
 
         );
 
-        localStorage.removeItem(
-
-            "TextFileComicCompleted"
-
-        );
-
-        location.reload();
-
-    }
+    });
 
 }
 
-console.log("📜 Text File Library Loaded");
+/*=========================================
+            DEBUG
+=========================================*/
+
+console.log("📜 Text File Library Ready");
