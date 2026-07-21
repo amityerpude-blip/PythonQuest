@@ -5,7 +5,6 @@
 
 const sections=[
 
-"storySection",
 "comicSection",
 "animationSection",
 "notesSection",
