@@ -99,3 +99,94 @@ grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 font-size:55px;
 }
 }
+/*=====================================
+        BADGES
+=====================================*/
+
+.badge{
+
+    background:#2b2f4b;
+
+    color:white;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.badge:hover{
+
+    transform:scale(1.05);
+
+    background:#3d4268;
+
+}
+
+/*=====================================
+        HERO
+=====================================*/
+
+.hero{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+/*=====================================
+        CARDS
+=====================================*/
+
+.card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+
+}
+
+/*=====================================
+        MODULE CARD
+=====================================*/
+
+.module{
+
+    min-height:420px;
+
+}
+
+/*=====================================
+        FOOTER
+=====================================*/
+
+footer{
+
+    margin-top:50px;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+/*=====================================
+        TIPS
+=====================================*/
+
+.card ul{
+
+    line-height:2;
+
+}
