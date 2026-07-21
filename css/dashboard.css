@@ -1,0 +1,101 @@
+
+/*=============================
+ Python Quest Adventure Hub
+=============================*/
+
+body{
+    margin:0;
+}
+
+.hero{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.playerStats{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.container{
+    width:92%;
+    max-width:1400px;
+    margin:auto;
+    padding-bottom:40px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+
+.module{
+    text-align:center;
+    border:2px solid rgba(255,255,255,.08);
+    transition:.3s;
+    min-height:280px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.module:hover{
+    transform:translateY(-8px) scale(1.02);
+    border-color:#FFD54F;
+    box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.emoji{
+    font-size:70px;
+    display:block;
+    margin:15px auto;
+}
+
+.module h3{
+    margin:10px 0;
+    color:#FFD54F;
+}
+
+.module p{
+    color:#ddd;
+    min-height:40px;
+}
+
+.module .btn{
+    margin-top:15px;
+}
+
+.progress{
+    margin:25px auto;
+    max-width:700px;
+}
+
+.progress-bar{
+    width:20%;
+}
+
+.card{
+    border-radius:18px;
+}
+
+footer{
+    margin-top:40px;
+}
+
+@media(max-width:768px){
+.playerStats{
+justify-content:center;
+}
+.hero h1{
+font-size:2rem;
+}
+.grid{
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+}
+.emoji{
+font-size:55px;
+}
+}
