@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Python Quest Dashboard</title>
 
+<link rel="stylesheet" href="css/style.css">
+
 <link rel="stylesheet" href="css/dashboard.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -18,289 +22,386 @@
 <header>
 
 <div class="logo">
+
 🐉 Python Quest
+
 </div>
 
 <nav>
 
 <a href="index.html">Home</a>
 
-<a href="map.html">Adventure Map</a>
+<a href="dashboard.html">Dashboard</a>
 
-<a href="code.html">Coding Lab</a>
+<a href="map.html">Adventure Map</a>
 
 </nav>
 
 </header>
 
-<section class="welcome">
+<section class="hero">
 
 <h1>
 
-Welcome,
-<span id="playerName">Dino</span>
+Welcome Adventurer!
 
 </h1>
 
 <p>
 
-Continue your magical coding journey.
-
-Every completed mission unlocks a new power.
+Master Python through Comics, Animations, Coding Challenges and Quests.
 
 </p>
 
 </section>
 
-<section class="stats">
+<section class="player-card">
 
-<div class="card">
+<div class="player">
 
-<h2>⭐ Level</h2>
+<h2>🦖 Dino Explorer</h2>
 
-<h1 id="levelValue">
-
-1
-
-</h1>
+<p>Level <span id="playerLevel">1</span></p>
 
 </div>
 
-<div class="card">
+<div class="stats">
 
-<h2>✨ XP</h2>
+<div class="stat">
 
-<h1>
+<h3>⭐ XP</h3>
 
-<span id="xpValue">
-
-120
-
-</span>
-
- / 500
-
-</h1>
-
-<div class="xp-container">
-
-<div id="xpBar" class="xp-bar">
+<h2 id="xp">0</h2>
 
 </div>
 
-</div>
+<div class="stat">
+
+<h3>🪙 Coins</h3>
+
+<h2 id="coins">0</h2>
 
 </div>
 
-<div class="card">
+<div class="stat">
 
-<h2>🪙 Coins</h2>
+<h3>🏆 Badges</h3>
 
-<h1 id="coinValue">
-
-150
-
-</h1>
+<h2 id="badges">0</h2>
 
 </div>
-
-<div class="card">
-
-<h2>❤️ Lives</h2>
-
-<h1 id="lifeValue">
-
-5
-
-</h1>
 
 </div>
 
 </section>
 
-<section class="modules">
+<section class="progress-section">
 
 <h2>
 
-Adventure Worlds
+Overall Progress
 
 </h2>
 
-<div class="grid">
+<div class="progress">
 
-<div class="module unlocked">
+<div class="progress-bar" id="overallProgress"></div>
 
-🏡
+</div>
 
-<h3>
+</section>
 
-Python Village
+<section>
 
-</h3>
+<h2 class="title">
 
-<p>
+🗺️ Adventure Worlds
 
-Start your journey.
+</h2>
 
-</p>
+<div class="modules">
+
+<div class="module">
+
+🐍
+
+<h3>Python Village</h3>
+
+<p>Python Basics</p>
+
+<a href="python-village/index.html">
 
 <button>
 
-Play
+Enter
 
 </button>
 
+</a>
+
 </div>
 
-<div class="module locked">
+<div class="module">
 
-🌲
+🌳
 
-<h3>
+<h3>Condition Forest</h3>
 
-Condition Forest
+<p>If Else</p>
 
-</h3>
+<a href="condition-forest/index.html">
 
-<p>
+<button>
 
-Locked
-
-</p>
-
-<button disabled>
-
-Locked
+Enter
 
 </button>
 
+</a>
+
 </div>
 
-<div class="module locked">
+<div class="module">
 
-🏔
+⛰️
 
-<h3>
+<h3>Loop Mountain</h3>
 
-Loop Mountain
+<p>Loops</p>
 
-</h3>
+<a href="loop-mountain/index.html">
 
-<p>
+<button>
 
-Locked
-
-</p>
-
-<button disabled>
-
-Locked
+Enter
 
 </button>
 
-</div>
-
-<div class="module" id="text-file-library">
-
-    📜
-
-    <h3>Text File Library</h3>
-
-    <p>Learn Python File Handling</p>
-
-    <button onclick="openWorld('text-file-library')">
-        Enter
-    </button>
+</a>
 
 </div>
 
+<div class="module">
+
+📜
+
+<h3>Text File Library</h3>
+
+<p>File Handling</p>
+
+<a href="text-file-library/index.html">
+
+<button>
+
+Enter
+
+</button>
+
+</a>
+
 </div>
 
-<div class="module locked">
+<div class="module">
 
 🦁
 
-<h3>
+<h3>CSV Kingdom</h3>
 
-CSV Kingdom
+<p>CSV Files</p>
 
-</h3>
+<a href="csv-kingdom/index.html">
 
-<p>
+<button>
 
-Locked
-
-</p>
-
-<button disabled>
-
-Locked
+Enter
 
 </button>
 
+</a>
+
 </div>
 
-<div class="module locked">
+<div class="module">
 
 🐼
 
-<h3>
+<h3>Pandas City</h3>
 
-Pandas City
+<p>Data Analysis</p>
 
-</h3>
+<a href="pandas-city/index.html">
 
-<p>
+<button>
 
-Locked
-
-</p>
-
-<button disabled>
-
-Locked
+Enter
 
 </button>
 
+</a>
+
 </div>
 
-<div class="module locked">
+<div class="module">
 
 🐉
 
-<h3>
+<h3>SQL Dragon Cave</h3>
 
-SQL Dragon Cave
+<p>Database</p>
 
-</h3>
+<a href="sql-dragon/index.html">
+
+<button>
+
+Enter
+
+</button>
+
+</a>
+
+</div>
+
+<div class="module">
+
+🤖
+
+<h3>AI Temple</h3>
+
+<p>Artificial Intelligence</p>
+
+<a href="ai-temple/index.html">
+
+<button>
+
+Enter
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="achievement-section">
+
+<h2>
+
+🏆 Achievements
+
+</h2>
+
+<div class="achievement-grid">
+
+<div class="achievement">
+
+🥇 First Quest
+
+</div>
+
+<div class="achievement">
+
+📖 Comic Master
+
+</div>
+
+<div class="achievement">
+
+💻 Coding Hero
+
+</div>
+
+<div class="achievement">
+
+🎯 Quiz Champion
+
+</div>
+
+<div class="achievement">
+
+📜 File Wizard
+
+</div>
+
+<div class="achievement">
+
+🐼 Pandas Master
+
+</div>
+
+</div>
+
+</section>
+
+<section class="quick-actions">
+
+<h2>
+
+⚡ Quick Actions
+
+</h2>
+
+<div class="action-grid">
+
+<a href="map.html">
+
+<button>
+
+🗺️ Open Adventure Map
+
+</button>
+
+</a>
+
+<a href="leaderboard.html">
+
+<button>
+
+🏆 Leaderboard
+
+</button>
+
+</a>
+
+<a href="profile.html">
+
+<button>
+
+👤 Profile
+
+</button>
+
+</a>
+
+<a href="settings.html">
+
+<button>
+
+⚙️ Settings
+
+</button>
+
+</a>
+
+</div>
+
+</section>
+
+<footer>
 
 <p>
 
-Locked
+© 2026 Python Quest
+
+Learning Python Through Adventures
 
 </p>
 
-<button disabled>
+</footer>
 
-Locked
-
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="actions">
-
-<button id="continueBtn">
-
-🚀 Continue Adventure
-
-</button>
-
-</section>
+<script src="js/storage.js"></script>
 
 <script src="js/dashboard.js"></script>
 
