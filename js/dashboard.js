@@ -106,31 +106,51 @@ function setValue(id,value){
 
 function updateOverallProgress(){
 
-    const player=JSON.parse(
+    const player = JSON.parse(
 
-        localStorage.getItem("pythonQuestPlayer")
+        localStorage.getItem(
+
+            "pythonQuestPlayer"
+
+        )
 
     );
 
     if(!player) return;
 
-    let completed=0;
+    const completed =
 
-    if(player.completedWorlds){
+    player.completedWorlds ?
 
-        completed=player.completedWorlds.length;
+    player.completedWorlds.length : 0;
 
-    }
+    const percent =
 
-    const percent=(completed/TOTAL_WORLDS)*100;
+    completed / TOTAL_WORLDS * 100;
 
-    const progress=document.getElementById("overallProgress");
+    const bar1 =
 
-    if(progress){
+    document.getElementById(
 
-        progress.style.width=percent+"%";
+        "overallProgress"
 
-    }
+    );
+
+    const bar2 =
+
+    document.getElementById(
+
+        "journeyProgress"
+
+    );
+
+    if(bar1)
+
+        bar1.style.width = percent + "%";
+
+    if(bar2)
+
+        bar2.style.width = percent + "%";
 
 }
 
@@ -236,37 +256,45 @@ function updateContinueButton(){
 /*=========================================================
             DAILY MISSION
 =========================================================*/
-
 function showDailyMission(){
 
-    const mission=document.getElementById("dailyMission");
+    const mission =
+
+    document.getElementById(
+
+        "dailyMission"
+
+    );
 
     if(!mission) return;
 
-    mission.innerHTML=`
+    mission.innerHTML = `
 
-        <h3>📅 Today's Mission</h3>
+<h2>📅 Daily Mission</h2>
 
-        <p>
+<p>
 
-        Complete one Coding Challenge
+Complete one Coding Challenge
 
-        </p>
+</p>
 
-        <p>
+<p>
 
-        Reward:
+Reward
 
-        ⭐100 XP &nbsp;
+</p>
 
-        🪙50 Coins
+<h3>
 
-        </p>
+⭐100 XP
 
-    `;
+🪙50 Coins
+
+</h3>
+
+`;
 
 }
-
 
 /*=========================================================
             COMPLETE WORLD
