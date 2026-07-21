@@ -6,314 +6,376 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>📜 Text File Library | Python Quest</title>
+<title>Python Quest | Text File Library</title>
 
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<header>
+<!-- ================= HEADER ================= -->
 
-<div class="logo">
-🐉 Python Quest
-</div>
+<header class="lessonHeader">
 
-<nav>
+    <div class="logo">
+        📜 Python Quest
+    </div>
 
-<a href="../index.html">Home</a>
+    <div class="playerStats">
 
-<a href="../dashboard.html">Dashboard</a>
+        <span>⭐ <span id="xp">0</span></span>
 
-<a href="../map.html">Adventure Map</a>
+        <span>🪙 <span id="coins">0</span></span>
 
-</nav>
+        <span>🏆 <span id="badges">0</span></span>
+
+        <span>Level <span id="playerLevel">1</span></span>
+
+    </div>
 
 </header>
 
-<!-- Hero -->
 
-<section class="hero">
+<!-- ================= TITLE ================= -->
 
-<h1>📜 Text File Library</h1>
+<section class="lessonTitle">
+
+<h1>📜 The Text File Library</h1>
 
 <p>
 
-Welcome to the magical library of File Wizard Merlin.
-
-Learn the secrets of Python File Handling through comics, animations,
-
-coding missions and quizzes.
+Master Python File Handling with Comics, Animation, Coding and Quests.
 
 </p>
 
 </section>
 
-<!-- Progress -->
 
-<section class="lesson-progress">
+<!-- ================= QUEST NAVIGATION ================= -->
 
-<h2>Your Progress</h2>
+<nav class="lessonTabs">
 
-<div class="progress">
-
-<div id="lessonProgress" class="progress-bar" style="width:15%"></div>
-
-</div>
-
-<p>
-
-Step 1 of 6
-
-</p>
-
-</section>
-
-<!-- Lesson Navigation -->
-
-<section class="lesson-menu">
-
-<button class="active">
+<button class="tab active" data-target="comicSection">
 
 📖 Comic
 
 </button>
 
-<button disabled>
+<button class="tab" data-target="animationSection">
 
 🎬 Animation
 
 </button>
 
-<button disabled>
+<button class="tab" data-target="notesSection">
 
 📚 Notes
 
 </button>
 
-<button disabled>
+<button class="tab" data-target="codingSection">
 
 💻 Coding
 
 </button>
 
-<button disabled>
+<button class="tab" data-target="quizSection">
 
 📝 Quiz
 
 </button>
 
-<button disabled>
+<button class="tab" data-target="rewardSection">
 
 🏆 Reward
 
 </button>
 
-</section>
+</nav>
 
-<!-- Comic Section -->
 
-<section id="comicSection">
+<!-- ================= PROGRESS ================= -->
 
-<div class="section-title">
+<div class="lessonProgress">
 
-<h2>
+<div id="lessonProgressBar"></div>
 
-📖 Comic Adventure
+</div>
 
-</h2>
+
+<!-- ========================================================= -->
+
+<main class="contentArea">
+
+<!-- ================= COMIC ================= -->
+
+<section id="comicSection" class="lessonContent active">
+
+<h2>📖 Comic Adventure</h2>
+
+<div id="flipbook">
+
+<h3>
+
+Your Comic Pages will appear here.
+
+</h3>
 
 <p>
 
-Read the complete comic before continuing.
+Place all comic images inside
+
+<b>comics/</b>
+
+folder.
 
 </p>
 
 </div>
 
-<div class="flipbook">
+<div class="center">
 
-<button id="prevPage">
+<button id="startComic">
+
+Read Comic
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= ANIMATION ================= -->
+
+<section id="animationSection" class="lessonContent">
+
+<h2>🎬 Story Animation</h2>
+
+<video
+
+id="lessonVideo"
+
+controls
+
+width="100%">
+
+<source
+
+src="videos/text-file-story.mp4"
+
+type="video/mp4">
+
+</video>
+
+<div class="tipBox">
+
+<h3>🦖 Dino Tip</h3>
+
+<p>
+
+Observe carefully how Dino creates, writes and reads a text file.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= NOTES ================= -->
+
+<section id="notesSection" class="lessonContent">
+
+<h2>📚 Quick Notes</h2>
+
+<div class="notesCard">
+
+<h3>What is a Text File?</h3>
+
+<p>
+
+A text file stores information in plain text format.
+
+Python uses the <b>open()</b> function to work with files.
+
+</p>
+
+</div>
+
+<div class="notesCard">
+
+<h3>Create a File</h3>
+
+<pre>
+
+file = open("demo.txt","w")
+
+file.close()
+
+</pre>
+
+</div>
+
+<div class="notesCard">
+
+<h3>Read File</h3>
+
+<pre>
+
+file = open("demo.txt","r")
+
+print(file.read())
+
+file.close()
+
+</pre>
+
+</div>
+
+</section>
+
+
+<!-- ================= CODING ================= -->
+
+<section id="codingSection" class="lessonContent">
+
+<h2>💻 Coding Playground</h2>
+
+<textarea id="pythonCode">
+
+print("Welcome to Python Quest!")
+
+</textarea>
+
+<div class="center">
+
+<button id="runCode">
+
+▶ Run Code
+
+</button>
+
+</div>
+
+<h3>Output</h3>
+
+<pre id="output">
+
+Program Output...
+
+</pre>
+
+</section>
+
+
+<!-- ================= QUIZ ================= -->
+
+<section id="quizSection" class="lessonContent">
+
+<h2>📝 Mini Quiz</h2>
+
+<div id="quizContainer">
+
+Quiz will load here.
+
+</div>
+
+<div class="center">
+
+<button id="submitQuiz">
+
+Submit Quiz
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= REWARD ================= -->
+
+<section id="rewardSection" class="lessonContent">
+
+<h2>🏆 Congratulations!</h2>
+
+<div class="rewardBox">
+
+<div class="chest">
+
+🎁
+
+</div>
+
+<h3>
+
+Lesson Completed
+
+</h3>
+
+<p>
+
+⭐ +300 XP
+
+</p>
+
+<p>
+
+🪙 +150 Coins
+
+</p>
+
+<p>
+
+🏅 Text File Master Badge
+
+</p>
+
+<button id="claimReward">
+
+Claim Reward
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<footer class="lessonFooter">
+
+<button id="previousBtn">
 
 ⬅ Previous
 
 </button>
 
-<div class="comic-frame">
-
-<img
-
-id="comicImage"
-
-src="comics/page1.jpg"
-
-alt="Comic Page"
-
->
-
-<div class="page-counter">
-
-Page
-
-<span id="pageNumber">
-
-1
-
-</span>
-
-/
-
-<span id="totalPages">
-
-20
-
-</span>
-
-</div>
-
-</div>
-
-<button id="nextPage">
+<button id="nextBtn">
 
 Next ➜
 
 </button>
 
-</div>
-
-<div class="comic-tools">
-
-<button id="zoomBtn">
-
-🔍 Zoom
-
-</button>
-
-<button id="fullscreenBtn">
-
-⛶ Full Screen
-
-</button>
-
-<button id="bookmarkBtn">
-
-🔖 Bookmark
-
-</button>
-
-</div>
-
-<div class="comic-complete">
-
-<button
-
-id="finishComic"
-
-class="btn btn-success"
-
-disabled>
-
-✅ Finish Comic
-
-</button>
-
-</div>
-
-</section>
-
-<!-- Comic Information -->
-
-<section class="story-box">
-
-<h2>
-
-🦖 Story Preview
-
-</h2>
-
-<p>
-
-Dino discovers an ancient library filled with magical books.
-
-Each book contains forgotten programming spells.
-
-To help the villagers preserve important information,
-
-Wizard Merlin teaches Dino how to create, read,
-
-write and update magical text scrolls using Python File Handling.
-
-Every chapter unlocks a new spell.
-
-</p>
-
-</section>
-
-<!-- Learning Goals -->
-
-<section class="objectives">
-
-<h2>
-
-🎯 Learning Objectives
-
-</h2>
-
-<div class="objective-grid">
-
-<div class="card">
-
-📂 Create Text Files
-
-</div>
-
-<div class="card">
-
-📝 Write Data
-
-</div>
-
-<div class="card">
-
-📖 Read Files
-
-</div>
-
-<div class="card">
-
-➕ Append Information
-
-</div>
-
-<div class="card">
-
-❌ Close Files Properly
-
-</div>
-
-<div class="card">
-
-⚡ Solve Real Problems
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-Python Quest © 2026
-
 </footer>
+
+
+<!-- ================= SCRIPTS ================= -->
 
 <script src="../js/storage.js"></script>
 
+<script src="../js/app.js"></script>
+
 <script src="flipbook.js"></script>
+
 <script src="app.js"></script>
 
 </body>
