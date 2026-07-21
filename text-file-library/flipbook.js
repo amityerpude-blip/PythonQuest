@@ -31,7 +31,7 @@ function loadFlipbook(){
             id="comicImage"
             style="
                 width:100%;
-                max-height:650px;
+                max-height:700px;
                 object-fit:contain;
                 border-radius:15px;
             "
