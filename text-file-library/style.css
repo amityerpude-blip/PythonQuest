@@ -111,59 +111,91 @@ margin-bottom:30px;
                 TABS
 =========================================*/
 
+/*====================================================
+            LESSON TILES
+====================================================*/
+
 .tabsContainer{
-
-    width:90%;
-
-    max-width:1200px;
-
-    margin:25px auto;
 
     display:grid;
 
-    grid-template-columns:repeat(6,1fr);
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
 
     gap:18px;
+
+    max-width:1100px;
+
+    margin:30px auto;
+
+    padding:0 20px;
 
 }
 
 .tab{
 
-    border:none;
-
-    border-radius:18px;
-
-    padding:20px;
-
     background:rgba(255,255,255,.08);
 
-    color:white;
+    border:2px solid rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+    padding:25px 10px;
+
+    text-align:center;
 
     cursor:pointer;
 
-    font-size:18px;
+    transition:.35s;
+
+    color:white;
+
+    font-size:17px;
 
     font-weight:600;
 
-    transition:.3s;
+    backdrop-filter:blur(10px);
 
-    min-height:110px;
+    min-height:130px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
 
 }
 
 .tab:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-8px);
 
-    background:#30435f;
+    background:#6C63FF;
+
+    border-color:#FFD54F;
+
+    box-shadow:0 0 25px rgba(108,99,255,.5);
 
 }
 
 .tab.active{
 
-    background:var(--secondary);
+    background:#FFD54F;
 
-    color:#111;
+    color:black;
+
+    border-color:#FFD54F;
+
+    transform:scale(1.05);
+
+}
+
+.tab .emoji{
+
+    font-size:45px;
+
+    margin-bottom:12px;
 
 }
 
