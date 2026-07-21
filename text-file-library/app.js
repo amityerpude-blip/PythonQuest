@@ -1,32 +1,40 @@
-/*==================================================
-        Python Quest
-        Text File Library Controller
-==================================================*/
+/*=========================================================
+            PYTHON QUEST
+        TEXT FILE LIBRARY CONTROLLER
+=========================================================*/
 
 const sections = [
+
     "comicSection",
     "animationSection",
     "notesSection",
     "codingSection",
     "quizSection",
     "rewardSection"
-];
 
-const tabs = document.querySelectorAll(".tab");
+];
 
 let currentSection = 0;
 
-/*=========================================
-            INITIALIZE
-=========================================*/
+/*=========================================================
+                PAGE LOAD
+=========================================================*/
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    loadProgress();
+    loadSavedSection();
 
     initializeTabs();
 
     initializeButtons();
+
+    initializeVideo();
+
+    initializeCoding();
+
+    initializeQuiz();
+
+    initializeReward();
 
     updatePlayerStats();
 
@@ -34,11 +42,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
 });
 
-/*=========================================
-            TAB CLICK
-=========================================*/
+
+/*=========================================================
+                TABS
+=========================================================*/
 
 function initializeTabs(){
+
+    const tabs = document.querySelectorAll(".tab");
 
     tabs.forEach((tab,index)=>{
 
@@ -48,41 +59,57 @@ function initializeTabs(){
 
             showSection(currentSection);
 
-            saveProgress();
-
         });
 
     });
 
 }
 
-/*=========================================
-        PREVIOUS / NEXT
-=========================================*/
 
-function initializeButtons(){
+/*=========================================================
+            SHOW CURRENT SECTION
+=========================================================*/
 
-    document.getElementById("nextBtn")
-    .addEventListener("click",nextSection);
+function showSection(index){
 
-    document.getElementById("previousBtn")
-    .addEventListener("click",previousSection);
+    document.querySelectorAll(".lessonContent")
+
+    .forEach(section=>{
+
+        section.classList.remove("active");
+
+    });
+
+    document.querySelectorAll(".tab")
+
+    .forEach(tab=>{
+
+        tab.classList.remove("active");
+
+    });
+
+    document
+
+    .getElementById(sections[index])
+
+    .classList.add("active");
+
+    document
+
+    .querySelectorAll(".tab")[index]
+
+    .classList.add("active");
+
+    updateProgress();
+
+    saveCurrentSection();
 
 }
 
-function nextSection(){
 
-    if(currentSection<sections.length-1){
-
-        currentSection++;
-
-        showSection(currentSection);
-
-        saveProgress();
-
-    }
-
-}
+/*=========================================================
+            PREVIOUS
+=========================================================*/
 
 function previousSection(){
 
@@ -92,81 +119,79 @@ function previousSection(){
 
         showSection(currentSection);
 
-        saveProgress();
+    }
+
+}
+
+
+/*=========================================================
+            NEXT
+=========================================================*/
+
+function nextSection(){
+
+    if(currentSection<sections.length-1){
+
+        currentSection++;
+
+        showSection(currentSection);
 
     }
 
 }
 
-/*=========================================
-            SHOW SECTION
-=========================================*/
 
-function showSection(index){
+/*=========================================================
+            BUTTONS
+=========================================================*/
 
-    document
-    .querySelectorAll(".lessonContent")
-    .forEach(section=>{
+function initializeButtons(){
 
-        section.classList.remove("active");
+    const previous=document.getElementById("previousBtn");
 
-    });
+    const next=document.getElementById("nextBtn");
 
-    tabs.forEach(tab=>{
+    if(previous){
 
-        tab.classList.remove("active");
+        previous.onclick=previousSection;
 
-    });
+    }
 
-    document
-    .getElementById(sections[index])
-    .classList.add("active");
+    if(next){
 
-    tabs[index].classList.add("active");
+        next.onclick=nextSection;
 
-    updateProgress();
-
-    updateButtons();
+    }
 
 }
 
-/*=========================================
-        UPDATE BUTTONS
-=========================================*/
 
-function updateButtons(){
-
-    document.getElementById("previousBtn").disabled =
-    currentSection===0;
-
-    document.getElementById("nextBtn").disabled =
-    currentSection===sections.length-1;
-
-}
-
-/*=========================================
+/*=========================================================
             PROGRESS BAR
-=========================================*/
+=========================================================*/
 
 function updateProgress(){
 
-    const percent =
-    ((currentSection+1)/sections.length)*100;
+    const bar=document.getElementById("lessonProgressBar");
 
-    document.getElementById("lessonProgressBar")
-    .style.width = percent + "%";
+    if(!bar) return;
+
+    const percent=((currentSection+1)/sections.length)*100;
+
+    bar.style.width=percent+"%";
 
 }
 
-/*=========================================
-        SAVE PROGRESS
-=========================================*/
 
-function saveProgress(){
+/*=========================================================
+            SAVE CURRENT TAB
+=========================================================*/
+
+function saveCurrentSection(){
 
     localStorage.setItem(
 
-        "TextFileLessonProgress",
+        "TextFileLibraryTab",
 
         currentSection
 
@@ -174,14 +199,16 @@ function saveProgress(){
 
 }
 
-/*=========================================
-        LOAD PROGRESS
-=========================================*/
 
-function loadProgress(){
+/*=========================================================
+            LOAD LAST TAB
+=========================================================*/
 
-    const saved =
-    localStorage.getItem("TextFileLessonProgress");
+function loadSavedSection(){
+
+    const saved=
+
+    localStorage.getItem("TextFileLibraryTab");
 
     if(saved!==null){
 
@@ -191,13 +218,14 @@ function loadProgress(){
 
 }
 
-/*=========================================
-        PLAYER STATS
-=========================================*/
+
+/*=========================================================
+            PLAYER STATS
+=========================================================*/
 
 function updatePlayerStats(){
 
-    const player = JSON.parse(
+    const player=JSON.parse(
 
         localStorage.getItem("pythonQuestPlayer")
 
@@ -205,157 +233,174 @@ function updatePlayerStats(){
 
     if(!player) return;
 
-    document.getElementById("xp").textContent =
-    player.xp;
+    if(document.getElementById("xp"))
 
-    document.getElementById("coins").textContent =
-    player.coins;
+        document.getElementById("xp").textContent=player.xp;
 
-    document.getElementById("badges").textContent =
-    player.badges;
+    if(document.getElementById("coins"))
 
-    document.getElementById("playerLevel").textContent =
-    player.level;
+        document.getElementById("coins").textContent=player.coins;
+
+    if(document.getElementById("badges"))
+
+        document.getElementById("badges").textContent=player.badges;
+
+    if(document.getElementById("playerLevel"))
+
+        document.getElementById("playerLevel").textContent=player.level;
 
 }
 
-/*=========================================
-        REWARD
-=========================================*/
 
-document.getElementById("claimReward")
-.addEventListener("click",claimReward);
+/*=========================================================
+            VIDEO
+=========================================================*/
 
-function claimReward(){
+function initializeVideo(){
 
-    let player = JSON.parse(
+    const video=document.getElementById("lessonVideo");
+
+    if(!video) return;
+
+    video.onended=function(){
+
+        alert("🎬 Animation Completed!");
+
+    };
+
+}
+
+
+/*=========================================================
+            COMIC
+=========================================================*/
+
+const comicBtn=document.getElementById("startComic");
+
+if(comicBtn){
+
+comicBtn.onclick=function(){
+
+if(typeof loadFlipbook==="function"){
+
+loadFlipbook();
+
+}
+
+};
+
+}
+
+
+/*=========================================================
+            CODING
+=========================================================*/
+
+function initializeCoding(){
+
+    const run=document.getElementById("runCode");
+
+    if(!run) return;
+
+    run.onclick=function(){
+
+        const code=document.getElementById("pythonCode").value;
+
+        document.getElementById("output").textContent=
+
+"Python Execution Engine\n\n"+
+
+"(Pyodide will be integrated next)\n\n"+
+
+code;
+
+    };
+
+}
+
+
+/*=========================================================
+            QUIZ
+=========================================================*/
+
+function initializeQuiz(){
+
+    const submit=document.getElementById("submitQuiz");
+
+    if(!submit) return;
+
+    submit.onclick=function(){
+
+        alert(
+
+"Quiz Engine Coming Next."
+
+        );
+
+    };
+
+}
+
+
+/*=========================================================
+            REWARD
+=========================================================*/
+
+function initializeReward(){
+
+    const reward=document.getElementById("claimReward");
+
+    if(!reward) return;
+
+    reward.onclick=function(){
+
+        let player=JSON.parse(
 
         localStorage.getItem("pythonQuestPlayer")
 
-    );
+        );
 
-    if(!player){
+        if(!player){
 
-        alert("Player data not found.");
+            alert("Player not found.");
 
-        return;
+            return;
 
-    }
+        }
 
-    player.xp += 300;
+        player.xp+=300;
 
-    player.coins += 150;
+        player.coins+=150;
 
-    player.badges += 1;
+        player.badges++;
 
-    if(!player.completedWorlds.includes("text-file-library")){
-
-        player.completedWorlds.push("text-file-library");
-
-    }
-
-    localStorage.setItem(
+        localStorage.setItem(
 
         "pythonQuestPlayer",
 
         JSON.stringify(player)
 
-    );
+        );
 
-    updatePlayerStats();
-
-    alert(
-`🎉 Congratulations!
-
-You completed
-Text File Library
-
-⭐ +300 XP
-🪙 +150 Coins
-🏆 New Badge Earned`
-    );
-
-}
-
-/*=========================================
-        RUN PYTHON
-=========================================*/
-
-document.getElementById("runCode")
-.addEventListener("click",()=>{
-
-    const output =
-    document.getElementById("output");
-
-    output.textContent =
-`Pyodide integration coming next...
-
-Your Python code:
-
------------------------
-
-` +
-document.getElementById("pythonCode").value;
-
-});
-
-/*=========================================
-        QUIZ
-=========================================*/
-
-document.getElementById("submitQuiz")
-.addEventListener("click",()=>{
-
-    alert(
-
-"Quiz Engine will be added in the next step."
-
-    );
-
-});
-
-/*=========================================
-        COMIC
-=========================================*/
-
-document.getElementById("startComic")
-.addEventListener("click",()=>{
-
-    if(typeof loadFlipbook==="function"){
-
-        loadFlipbook();
-
-    }else{
-
-        alert("Flipbook Loaded");
-
-    }
-
-});
-
-/*=========================================
-        VIDEO COMPLETE
-=========================================*/
-
-const video =
-document.getElementById("lessonVideo");
-
-if(video){
-
-    video.addEventListener("ended",()=>{
+        updatePlayerStats();
 
         alert(
 
-"🎬 Animation Completed!"
+"🏆 Reward Claimed!\n\n+300 XP\n+150 Coins\n+1 Badge"
 
         );
 
-    });
+    };
 
 }
 
-/*=========================================
-            DEBUG
-=========================================*/
 
-console.log("📜 Text File Library Ready");
+/*=========================================================
+                DEBUG
+=========================================================*/
+
+console.log(
+
+"📜 Text File Library Ready"
+
+);
