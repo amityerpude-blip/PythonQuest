@@ -1149,3 +1149,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+window.addEventListener("load", () => {
+
+    alert(
+        "Tiles: " + document.querySelectorAll(".magicTile").length +
+        "\nSections: " + document.querySelectorAll(".lessonContent").length +
+        "\nStory: " + (document.getElementById("storySection") ? "YES" : "NO")
+    );
+
+});
