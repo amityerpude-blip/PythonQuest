@@ -1905,3 +1905,111 @@ height:90px;
 
 
 }
+/* =========================================================
+   ADVENTURE TAB SYSTEM
+   ========================================================= */
+
+
+.adventure-tabs{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin:30px 0;
+
+}
+
+
+
+.adventure-tab{
+
+    padding:14px 25px;
+
+    border:none;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-weight:bold;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #3776ab,
+        #9b5cff
+    );
+
+
+    transition:.3s;
+
+}
+
+
+
+.adventure-tab:hover,
+.adventure-tab.active{
+
+    transform:translateY(-4px);
+
+
+    box-shadow:
+
+    0 0 25px #ffd43b;
+
+
+}
+
+
+
+.tab-content{
+
+    display:none;
+
+    animation:
+
+    fadeIn .5s ease;
+
+}
+
+
+
+.tab-content.active{
+
+    display:block;
+
+}
+
+
+
+@keyframes fadeIn{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
