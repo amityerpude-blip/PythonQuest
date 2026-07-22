@@ -85,40 +85,21 @@ function loadMonster(){
 
     document.getElementById("optionsContainer").innerHTML = html;
 
-}
+    document.getElementById("prevBtn").disabled = currentMonster == 0;
 
-document.getElementById("optionsContainer").innerHTML=html;
+    if(currentMonster == monsterQuestions.length - 1){
 
-document.getElementById("prevBtn").disabled=currentMonster==0;
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("finishBtn").style.display = "inline-block";
 
-if(currentMonster==monsterQuestions.length-1){
+    }else{
 
-document.getElementById("nextBtn").style.display="none";
+        document.getElementById("nextBtn").style.display = "inline-block";
+        document.getElementById("finishBtn").style.display = "none";
 
-document.getElementById("finishBtn").style.display="inline-block";
-
-}else{
-
-document.getElementById("nextBtn").style.display="inline-block";
-
-document.getElementById("finishBtn").style.display="none";
+    }
 
 }
-
-}
-
-function saveAnswer(){
-
-let selected=document.querySelector('input[name="monster"]:checked');
-
-if(selected){
-
-userAnswers[currentMonster]=parseInt(selected.value);
-
-}
-
-}
-
 function nextMonster(){
 
 saveAnswer();
