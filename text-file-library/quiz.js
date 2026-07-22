@@ -1,104 +1,172 @@
-/*====================================================
-        Python Quest - Text File Quiz
-====================================================*/
-
-const quizQuestions = [
+const monsterQuestions=[
 
 {
-type:"mcq",
-question:"1. Which function is used to open a file in Python?",
-options:[
-"read()",
-"open()",
-"write()",
-"close()"
-],
+
+monster:"🐛 Bug Monster I",
+
+question:"Which function opens a file?",
+
+options:["read()","open()","write()","close()"],
+
 answer:1
+
 },
 
 {
-type:"mcq",
-question:"2. Which mode opens a file for writing?",
-options:[
-"r",
-"w",
-"a",
-"x"
-],
+
+monster:"🐛 Bug Monster II",
+
+question:"Which mode is used for writing?",
+
+options:["r","w","a","rb"],
+
 answer:1
+
 },
 
 {
-type:"mcq",
-question:"3. Which method reads the entire file?",
-options:[
-"read()",
-"write()",
-"append()",
-"input()"
-],
-answer:0
+
+monster:"🐛 Bug Monster III",
+
+question:"Which function closes a file?",
+
+options:["end()","close()","finish()","stop()"],
+
+answer:1
+
 },
 
 {
-type:"mcq",
-question:"4. Which mode appends data at the end of a file?",
-options:[
-"r",
-"w",
-"a",
-"x"
-],
+
+monster:"👹 Final Bug Monster",
+
+question:"Which mode appends data?",
+
+options:["r","w","a","x"],
+
 answer:2
-},
 
-{
-type:"tf",
-question:"5. The 'r' mode creates a new file.",
-answer:false
-},
-
-{
-type:"tf",
-question:"6. Files should be closed after use.",
-answer:true
-},
-
-{
-type:"output",
-question:`7. What will be printed?
-
-file=open("demo.txt","w")
-file.write("Python")
-file.close()
-
-file=open("demo.txt","r")
-print(file.read())`,
-answer:"Python"
-},
-
-{
-type:"output",
-question:`8. Which mode is used?
-
-open("student.txt","a")`,
-answer:"a"
-},
-
-{
-type:"output",
-question:`9. Which method writes data into a file?`,
-answer:"write"
-},
-
-{
-type:"output",
-question:`10. Which function closes a file?`,
-answer:"close"
 }
 
 ];
 
+let currentMonster=0;
+
+let userAnswers=[];
+
+loadMonster();
+
+function loadMonster(){
+
+let q=monsterQuestions[currentMonster];
+
+document.getElementById("monsterTitle").innerHTML=q.monster;
+
+document.getElementById("questionText").innerHTML=q.question;
+
+document.getElementById("monsterNumber").innerHTML=
+
+`Monster ${currentMonster+1} of ${monsterQuestions.length}`;
+
+document.getElementById("monsterProgress").style.width=
+
+((currentMonster+1)/monsterQuestions.length*100)+"%";
+
+let html="";
+
+q.options.forEach((opt,index)=>{
+
+html+=`
+
+<label class="option">
+
+<input type="radio"
+
+name="monster"
+
+value="${index}"
+
+${userAnswers[currentMonster]==index?"checked":""}>
+
+${opt}
+
+</label>
+
+`;
+
+});
+
+document.getElementById("optionsContainer").innerHTML=html;
+
+document.getElementById("prevBtn").disabled=currentMonster==0;
+
+if(currentMonster==monsterQuestions.length-1){
+
+document.getElementById("nextBtn").style.display="none";
+
+document.getElementById("finishBtn").style.display="inline-block";
+
+}else{
+
+document.getElementById("nextBtn").style.display="inline-block";
+
+document.getElementById("finishBtn").style.display="none";
+
+}
+
+}
+
+function saveAnswer(){
+
+let selected=document.querySelector('input[name="monster"]:checked');
+
+if(selected){
+
+userAnswers[currentMonster]=parseInt(selected.value);
+
+}
+
+}
+
+function nextMonster(){
+
+saveAnswer();
+
+currentMonster++;
+
+loadMonster();
+
+}
+
+function previousMonster(){
+
+saveAnswer();
+
+currentMonster--;
+
+loadMonster();
+
+}
+
+function finishHunt(){
+
+saveAnswer();
+
+let score=0;
+
+monsterQuestions.forEach((q,i)=>{
+
+if(userAnswers[i]==q.answer) score++;
+
+});
+
+alert(
+
+`🎉 Monster Hunt Complete!\n\nScore : ${score}/${monsterQuestions.length}`
+
+);
+
+}
 /*====================================================
             CREATE QUIZ
 ====================================================*/
