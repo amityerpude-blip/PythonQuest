@@ -3,15 +3,13 @@
         TEXT FILE LIBRARY CONTROLLER
 =========================================================*/
 
-const sections=[
-
-"comicSection",
-"animationSection",
-"notesSection",
-"codingSection",
-"quizSection",
-"rewardSection"
-
+const sections = [
+    "comicSection",
+    "animationSection",
+    "notesSection",
+    "codingSection",
+    "monsterSection",
+    "rewardSection"
 ];
 
 let currentSection = 0;
@@ -337,11 +335,9 @@ code;
 
 function initializeQuiz(){
 
-    // Load questions if quiz.js is available
+    if(typeof loadMonster === "function"){
 
-    if(typeof loadQuiz === "function"){
-
-        loadQuiz();
+        loadMonster();
 
     }
 
