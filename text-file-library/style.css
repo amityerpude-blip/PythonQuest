@@ -1,701 +1,1907 @@
-/*=========================================
-        TEXT FILE LIBRARY
-=========================================*/
-.storyCard{
+/* =========================================================
+   TEXT FILE HANDLING ADVENTURE
+   Python Quest - Magical World of Coding
+   style.css - Part 1
+   ========================================================= */
 
-max-width:900px;
 
-margin:auto;
+/* ---------- RESET ---------- */
 
-padding:40px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+}
 
-text-align:center;
 
-background:rgba(255,255,255,.08);
+body {
 
-border-radius:20px;
+    min-height:100vh;
 
-box-shadow:0 0 30px rgba(0,0,0,.35);
+    background:
+    linear-gradient(
+        rgba(10,20,40,.75),
+        rgba(20,10,45,.85)
+    ),
+    url("../assets/text-file-bg.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+    color:white;
 
 }
 
-.masterImage{
 
-font-size:120px;
+/* ---------- ROOT MAGIC COLORS ---------- */
 
-margin-bottom:20px;
+:root {
 
-animation:float 3s infinite;
+    --magic-blue:#3aa8ff;
+    --python-yellow:#ffd43b;
+    --forest-green:#43e97b;
+    --magic-purple:#9b5cff;
+    --gold:#ffcc33;
+    --dragon-red:#ff6b6b;
 
-}
+    --glass:
+    rgba(255,255,255,.12);
 
-.storyCard h1{
+    --card:
+    rgba(20,25,55,.85);
 
-font-size:48px;
-
-color:#FFD54F;
-
-}
-
-.storyCard h3{
-
-color:#6C63FF;
-
-margin-bottom:20px;
+    --shadow:
+    0 10px 35px rgba(0,0,0,.45);
 
 }
 
-.storyCard p{
 
-font-size:20px;
 
-line-height:1.8;
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
 
-margin-bottom:30px;
+
+.text-adventure {
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:25px;
 
 }
 
-/* Lesson Header */
 
-.lessonHeader{
+
+/* =========================================================
+   TOP TITLE AREA
+   ========================================================= */
+
+
+.adventure-header {
+
 
     text-align:center;
 
-    padding:40px 20px 20px;
+    padding:25px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        rgba(58,168,255,.25),
+        rgba(155,92,255,.25)
+    );
+
+
+    backdrop-filter:blur(12px);
+
+
+    border-radius:25px;
+
+
+    box-shadow:var(--shadow);
+
+
+    border:
+    1px solid rgba(255,255,255,.18);
 
 }
 
-.lessonHeader h1{
+
+
+.adventure-header h1 {
+
 
     font-size:42px;
 
-    color:var(--secondary);
 
-    margin-bottom:10px;
+    color:var(--python-yellow);
 
-}
 
-.lessonHeader p{
+    text-shadow:
 
-    max-width:900px;
+    0 0 20px rgba(255,212,59,.8);
 
-    margin:auto;
-
-    color:var(--text-light);
-
-    line-height:1.7;
 
 }
 
-/*=========================================
-                PLAYER
-=========================================*/
 
-.playerStats{
 
-    display:flex;
+.adventure-header p {
 
-    gap:25px;
 
-    font-weight:600;
+    margin-top:10px;
 
-}
-
-.stat{
 
     font-size:18px;
 
+
+    opacity:.9;
+
 }
 
-/*=========================================
-                TABS
-=========================================*/
 
-/*====================================================
-            LESSON TILES
-====================================================*/
 
-.tabsContainer{
+/* =========================================================
+   MASTER & DINO INTRO PANEL
+   ========================================================= */
+
+
+.character-zone {
+
+
+    margin-top:30px;
+
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
 
-    gap:18px;
+    grid-template-columns:
 
-    max-width:1100px;
+    250px 1fr 250px;
 
-    margin:30px auto;
 
-    padding:0 20px;
+    gap:25px;
 
-}
-
-.tab{
-
-    background:rgba(255,255,255,.08);
-
-    border:2px solid rgba(255,255,255,.15);
-
-    border-radius:20px;
-
-    padding:25px 10px;
-
-    text-align:center;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:600;
-
-    backdrop-filter:blur(10px);
-
-    min-height:130px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
 
     align-items:center;
 
+
 }
 
-.tab:hover{
+
+
+
+.character-card {
+
+
+    background:var(--card);
+
+
+    padding:20px;
+
+
+    border-radius:25px;
+
+
+    text-align:center;
+
+
+    box-shadow:var(--shadow);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.character-card:hover {
+
 
     transform:translateY(-8px);
 
-    background:#6C63FF;
 
-    border-color:#FFD54F;
+    box-shadow:
 
-    box-shadow:0 0 25px rgba(108,99,255,.5);
+    0 0 30px var(--magic-blue);
 
-}
-
-.tab.active{
-
-    background:#FFD54F;
-
-    color:black;
-
-    border-color:#FFD54F;
-
-    transform:scale(1.05);
 
 }
 
-.tab .emoji{
 
-    font-size:45px;
 
-    margin-bottom:12px;
+.character-card img {
 
-}
 
-/*=========================================
-            PROGRESS
-=========================================*/
+    width:150px;
 
-.lessonProgress{
+    height:150px;
 
-    width:90%;
 
-    max-width:1200px;
+    object-fit:contain;
 
-    margin:auto;
-
-    margin-bottom:25px;
 
 }
 
-/*=========================================
-            MAIN CONTENT
-=========================================*/
 
-.lessonContainer{
 
-    width:90%;
+.character-card h3 {
 
-    max-width:1200px;
 
-    margin:auto;
+    margin-top:15px;
 
-    background:rgba(255,255,255,.05);
 
-    border-radius:20px;
+    color:var(--gold);
 
-    padding:35px;
 
-    min-height:650px;
+    font-size:24px;
 
 }
 
-.lessonContent{
 
-    display:none;
 
-    animation:fade .6s;
 
-}
+/* =========================================================
+   STORY MAGIC BOOK
+   ========================================================= */
 
-.lessonContent.active{
 
-    display:block;
+.story-box {
 
-}
 
-.lessonContent h2{
+    background:
 
-    color:var(--secondary);
+    linear-gradient(
 
-    margin-bottom:25px;
+    135deg,
 
-}
+    rgba(255,255,255,.18),
 
-/*=========================================
-                COMIC
-=========================================*/
+    rgba(255,255,255,.05)
 
-#flipbook{
+    );
 
-    width:100%;
 
-    min-height:520px;
+    backdrop-filter:blur(15px);
 
-    border:3px dashed var(--secondary);
 
-    border-radius:20px;
+    padding:30px;
 
-    display:flex;
 
-    align-items:center;
+    border-radius:25px;
 
-    justify-content:center;
 
-    background:#1d2d44;
+    box-shadow:var(--shadow);
 
-    overflow:hidden;
 
 }
 
-.comicPlaceholder{
 
-    text-align:center;
 
-    color:white;
+.story-box h2 {
 
-}
 
-.comicPlaceholder h3{
+    color:var(--forest-green);
+
 
     margin-bottom:15px;
 
-    color:var(--secondary);
 
 }
 
-.comicPlaceholder p{
 
-    font-size:18px;
+
+.story-box p {
+
 
     line-height:1.8;
 
-}
 
-/*=========================================
-                VIDEO
-=========================================*/
+    font-size:17px;
 
-video{
-
-    width:100%;
-
-    border-radius:18px;
-
-    background:black;
 
 }
 
-/*=========================================
-                NOTES
-=========================================*/
 
-.notesGrid{
+
+/* =========================================================
+   LEARNING JOURNEY CARDS
+   ========================================================= */
+
+
+.learning-grid {
+
+
+    margin-top:35px;
+
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(220px,1fr));
+
 
     gap:20px;
 
+
 }
 
-.noteCard{
 
-    background:#24364f;
+
+.learning-card {
+
+
+    background:var(--card);
+
 
     padding:25px;
 
-    border-radius:16px;
-
-}
-
-.noteCard h3{
-
-    margin-bottom:15px;
-
-    color:var(--secondary);
-
-}
-
-.noteCard pre{
-
-    white-space:pre-wrap;
-
-    font-size:17px;
-
-}
-
-/*=========================================
-                CODING
-=========================================*/
-
-#pythonCode{
-
-    width:100%;
-
-    height:350px;
-
-    background:#0d1117;
-
-    color:#58a6ff;
-
-    border-radius:16px;
-
-    padding:20px;
-
-    font-size:17px;
-
-    font-family:Consolas,monospace;
-
-}
-
-#output{
-
-    margin-top:20px;
-
-    background:#111827;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    min-height:160px;
-
-    overflow:auto;
-
-}
-
-/*=========================================
-                QUIZ
-=========================================*/
-
-#quizContainer{
-
-    display:grid;
-
-    gap:25px;
-
-}
-
-.quizCard{
-
-    background:#24364f;
-
-    padding:25px;
-
-    border-radius:16px;
-
-}
-
-.quizCard h3{
-
-    margin-bottom:15px;
-
-    color:var(--secondary);
-
-}
-
-.quizCard label{
-
-    display:block;
-
-    margin:10px 0;
-
-    cursor:pointer;
-
-}
-
-/*=========================================
-                REWARD
-=========================================*/
-
-.rewardBox{
-
-    text-align:center;
-
-    padding:50px;
-
-    background:#24364f;
 
     border-radius:20px;
 
-}
-
-.rewardBox h2{
-
-    color:#FFD54F;
-
-    margin-bottom:20px;
-
-}
-
-.rewardBox p{
-
-    font-size:20px;
-
-    margin-bottom:30px;
-
-}
-
-/*=========================================
-            BUTTONS
-=========================================*/
-
-.lessonButtons{
-
-    margin-top:25px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-}
-
-.lessonFooter{
-
-    width:90%;
-
-    max-width:1200px;
-
-    margin:40px auto;
-
-    display:flex;
-
-    justify-content:space-between;
-
-}
-
-.center{
 
     text-align:center;
 
-    margin-top:25px;
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    transition:.3s;
+
 
 }
 
-/*=========================================
-            RESPONSIVE
-=========================================*/
+
+
+.learning-card:hover {
+
+
+    transform:scale(1.05);
+
+
+    box-shadow:
+
+    0 0 25px var(--magic-purple);
+
+
+}
+
+
+
+.learning-card .icon {
+
+
+    font-size:45px;
+
+
+}
+
+
+
+.learning-card h3 {
+
+
+    margin:15px 0;
+
+
+    color:var(--python-yellow);
+
+
+}
+
+
+
+.learning-card p {
+
+
+    opacity:.85;
+
+}
+
+
+
+/* =========================================================
+   MAGIC BUTTONS
+   ========================================================= */
+
+
+.magic-button {
+
+
+    display:inline-block;
+
+
+    margin-top:20px;
+
+
+    padding:12px 30px;
+
+
+    border:none;
+
+
+    border-radius:30px;
+
+
+    cursor:pointer;
+
+
+    color:white;
+
+
+    font-weight:bold;
+
+
+    text-decoration:none;
+
+
+    background:
+
+
+    linear-gradient(
+
+    135deg,
+
+    var(--magic-purple),
+
+    var(--magic-blue)
+
+    );
+
+
+    box-shadow:
+
+    0 8px 20px rgba(58,168,255,.4);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.magic-button:hover {
+
+
+    transform:translateY(-5px);
+
+
+    box-shadow:
+
+    0 0 30px var(--magic-blue);
+
+
+}
+
+
+
+/* =========================================================
+   MOBILE VIEW
+   ========================================================= */
+
 
 @media(max-width:900px){
 
-.tabsContainer{
 
-    grid-template-columns:repeat(3,1fr);
+.character-zone{
 
-}
 
-.lessonContainer{
+grid-template-columns:1fr;
 
-    padding:20px;
 
 }
 
-.lessonHeader h1{
 
-    font-size:32px;
+.adventure-header h1{
 
-}
-
-}
-
-@media(max-width:600px){
-
-.tabsContainer{
-
-    grid-template-columns:repeat(2,1fr);
-
-}
-
-.lessonFooter{
-
-    flex-direction:column;
-
-    gap:15px;
-
-}
-
-.lessonButtons{
-
-    flex-direction:column;
-
-    gap:15px;
-
-}
-
-.playerStats{
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-}
-
-}
-.hunt-container{
-
-max-width:800px;
-
-margin:auto;
-
-padding:30px;
-
-}
-
-.monster-card{
-
-background:#fff;
-
-border-radius:18px;
-
-padding:30px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-margin:25px 0;
-
-}
-
-.monster-card h3{
-
-text-align:center;
 
 font-size:30px;
 
-color:#d35400;
-
-margin-bottom:20px;
 
 }
 
-.monster-card p{
 
-font-size:20px;
+.text-adventure{
 
-margin-bottom:25px;
-
-}
-
-.option{
-
-display:block;
 
 padding:15px;
 
-margin:10px 0;
-
-border:2px solid #ddd;
-
-border-radius:12px;
-
-cursor:pointer;
-
-transition:.3s;
 
 }
 
-.option:hover{
 
-background:#f9f3d5;
+}
+/* =========================================================
+   TEXT FILE HANDLING ADVENTURE
+   style.css - Part 2
+   Comic + Animation + Notes Sections
+   ========================================================= */
 
-border-color:#f1c40f;
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+
+.section-title {
+
+
+    margin:45px 0 25px;
+
+    text-align:center;
+
 
 }
 
-.option input{
 
-margin-right:10px;
+.section-title h2 {
 
-}
 
-.hunt-buttons{
+    font-size:32px;
 
-display:flex;
 
-justify-content:space-between;
+    color:var(--python-yellow);
 
-margin-top:20px;
 
-}
+    text-shadow:
 
-.hunt-buttons button{
+    0 0 15px rgba(255,212,59,.7);
 
-padding:12px 30px;
-
-border:none;
-
-border-radius:12px;
-
-cursor:pointer;
-
-font-size:18px;
-
-background:#ff9800;
-
-color:white;
 
 }
 
-.progress{
 
-height:12px;
+.section-title p {
 
-background:#ddd;
 
-border-radius:20px;
+    margin-top:8px;
 
-margin-top:10px;
+
+    opacity:.85;
+
 
 }
 
-.progress-fill{
 
-height:12px;
 
-width:10%;
+/* =========================================================
+   COMIC FLIPBOOK MAGIC CHAMBER
+   ========================================================= */
 
-background:#4CAF50;
 
-border-radius:20px;
+.comic-area {
 
-transition:.4s;
+
+    margin-top:25px;
+
+
+    padding:30px;
+
+
+    background:
+
+    rgba(0,0,0,.35);
+
+
+    border-radius:25px;
+
+
+    box-shadow:var(--shadow);
+
+
+    text-align:center;
+
+
+}
+
+
+
+.comic-book {
+
+
+    position:relative;
+
+
+    width:min(650px,95%);
+
+
+    margin:auto;
+
+
+    background:white;
+
+
+    border-radius:15px;
+
+
+    overflow:hidden;
+
+
+    box-shadow:
+
+    0 0 35px rgba(255,204,51,.5);
+
+
+}
+
+
+
+.comic-book img {
+
+
+    width:100%;
+
+
+    display:block;
+
+
+    object-fit:contain;
+
+
+}
+
+
+
+/* Comic Controls */
+
+
+.comic-controls {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:20px;
+
+
+    margin-top:20px;
+
+
+}
+
+
+
+.comic-btn {
+
+
+    padding:12px 25px;
+
+
+    border:none;
+
+
+    border-radius:30px;
+
+
+    cursor:pointer;
+
+
+    color:white;
+
+
+    font-weight:bold;
+
+
+    background:
+
+
+    linear-gradient(
+
+    135deg,
+
+    var(--magic-blue),
+
+    var(--magic-purple)
+
+    );
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.comic-btn:hover {
+
+
+    transform:scale(1.1);
+
+
+    box-shadow:
+
+    0 0 20px var(--magic-blue);
+
+
+}
+
+
+
+/* Page counter */
+
+
+.page-number {
+
+
+    margin-top:15px;
+
+
+    color:var(--gold);
+
+
+    font-size:18px;
+
+
+}
+
+
+
+/* =========================================================
+   ANIMATION MAGIC PORTAL
+   ========================================================= */
+
+
+.animation-zone {
+
+
+    margin-top:40px;
+
+
+    padding:30px;
+
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(58,168,255,.18),
+
+    rgba(155,92,255,.18)
+
+    );
+
+
+    border-radius:25px;
+
+
+    box-shadow:var(--shadow);
+
+
+}
+
+
+
+.video-frame {
+
+
+    width:min(850px,95%);
+
+
+    margin:auto;
+
+
+    aspect-ratio:16/9;
+
+
+    background:black;
+
+
+    border-radius:20px;
+
+
+    overflow:hidden;
+
+
+    border:
+
+    3px solid rgba(255,255,255,.2);
+
+
+    box-shadow:
+
+    0 0 30px var(--magic-purple);
+
+
+}
+
+
+
+.video-frame video {
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+/* Animation message */
+
+
+.magic-message {
+
+
+    text-align:center;
+
+
+    margin-top:20px;
+
+
+    font-size:18px;
+
+
+    color:var(--forest-green);
+
+
+}
+
+
+
+/* =========================================================
+   CONCEPT NOTES MAGIC SCROLLS
+   ========================================================= */
+
+
+.notes-container {
+
+
+    margin-top:40px;
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(250px,1fr));
+
+
+    gap:25px;
+
+
+}
+
+
+
+.note-card {
+
+
+    background:
+
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(255,204,51,.15),
+
+    rgba(255,255,255,.08)
+
+    );
+
+
+    padding:25px;
+
+
+    border-radius:20px;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    box-shadow:var(--shadow);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.note-card:hover {
+
+
+    transform:
+
+    translateY(-8px);
+
+
+    box-shadow:
+
+    0 0 25px var(--gold);
+
+
+}
+
+
+
+.note-card h3 {
+
+
+    color:var(--gold);
+
+
+    margin-bottom:12px;
+
+
+    font-size:22px;
+
+
+}
+
+
+
+.note-card ul {
+
+
+    padding-left:20px;
+
+
+}
+
+
+
+.note-card li {
+
+
+    margin:8px 0;
+
+
+    line-height:1.5;
+
+
+}
+
+
+
+/* =========================================================
+   STORY MISSION PANEL
+   ========================================================= */
+
+
+.mission-box {
+
+
+    margin-top:40px;
+
+
+    padding:30px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+    rgba(20,25,55,.85);
+
+
+    border:
+
+    2px solid var(--forest-green);
+
+
+    box-shadow:
+
+    0 0 25px rgba(67,233,123,.35);
+
+
+}
+
+
+
+.mission-box h2 {
+
+
+    color:var(--forest-green);
+
+
+}
+
+
+
+.mission-task {
+
+
+    margin-top:15px;
+
+
+    padding:15px;
+
+
+    border-radius:15px;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+}
+
+
+
+/* =========================================================
+   SCROLL ANIMATION EFFECT
+   ========================================================= */
+
+
+.fade-in {
+
+
+    animation:
+
+    fadeIn 1s ease;
+
+
+}
+
+
+
+@keyframes fadeIn {
+
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE ADJUSTMENT
+   ========================================================= */
+
+
+@media(max-width:700px){
+
+
+.comic-area,
+.animation-zone,
+.mission-box{
+
+
+padding:15px;
+
+
+}
+
+
+
+.comic-controls{
+
+
+flex-direction:column;
+
+
+align-items:center;
+
+
+}
+
+
+
+.comic-btn{
+
+
+width:80%;
+
+
+}
+
+
+}
+/* =========================================================
+   TEXT FILE HANDLING ADVENTURE
+   style.css - Part 3
+   Coding + Quiz + Rewards
+   ========================================================= */
+
+
+/* =========================================================
+   PYTHON CODING CHAMBER
+   ========================================================= */
+
+
+.code-chamber {
+
+
+    margin-top:40px;
+
+
+    padding:30px;
+
+
+    background:
+
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(55,118,171,.25),
+
+    rgba(255,212,59,.15)
+
+    );
+
+
+    border-radius:25px;
+
+
+    box-shadow:var(--shadow);
+
+
+}
+
+
+
+.code-chamber h2 {
+
+
+    color:var(--python-yellow);
+
+
+    text-align:center;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+/* Problem Box */
+
+
+.problem-box {
+
+
+    background:
+
+    rgba(0,0,0,.35);
+
+
+    padding:20px;
+
+
+    border-radius:15px;
+
+
+    margin-bottom:20px;
+
+
+    border-left:
+
+    5px solid var(--magic-blue);
+
+
+}
+
+
+
+.problem-box h3 {
+
+
+    color:var(--magic-blue);
+
+
+}
+
+
+
+.problem-box p {
+
+
+    line-height:1.6;
+
+
+}
+
+
+
+/* Code Editor */
+
+
+.code-editor {
+
+
+    width:100%;
+
+
+    min-height:260px;
+
+
+    padding:20px;
+
+
+    resize:vertical;
+
+
+    background:
+
+    #111827;
+
+
+    color:#ffffff;
+
+
+    border-radius:15px;
+
+
+    border:
+
+    2px solid var(--python-blue);
+
+
+    font-family:
+
+    "Consolas","Courier New",monospace;
+
+
+    font-size:16px;
+
+
+    outline:none;
+
+
+}
+
+
+
+.code-editor:focus {
+
+
+    box-shadow:
+
+    0 0 25px var(--magic-blue);
+
+
+}
+
+
+
+/* Run Button */
+
+
+.run-button {
+
+
+    margin-top:20px;
+
+
+    padding:14px 40px;
+
+
+    border:none;
+
+
+    border-radius:30px;
+
+
+    cursor:pointer;
+
+
+    font-size:17px;
+
+
+    font-weight:bold;
+
+
+    color:white;
+
+
+    background:
+
+
+    linear-gradient(
+
+    135deg,
+
+    #3776ab,
+
+    #ffd43b
+
+    );
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.run-button:hover {
+
+
+    transform:translateY(-5px);
+
+
+    box-shadow:
+
+    0 0 30px var(--python-yellow);
+
+
+}
+
+
+
+/* =========================================================
+   OUTPUT CONSOLE
+   ========================================================= */
+
+
+.output-console {
+
+
+    margin-top:25px;
+
+
+    background:#050505;
+
+
+    min-height:120px;
+
+
+    padding:20px;
+
+
+    border-radius:15px;
+
+
+    border:
+
+    2px solid var(--forest-green);
+
+
+    font-family:
+
+    monospace;
+
+
+    color:#43e97b;
+
+
+    overflow:auto;
+
+
+}
+
+
+
+.output-title {
+
+
+    color:var(--forest-green);
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+/* =========================================================
+   QUIZ ARENA
+   ========================================================= */
+
+
+.quiz-section {
+
+
+    margin-top:45px;
+
+
+    padding:30px;
+
+
+    background:
+
+
+    rgba(20,25,55,.85);
+
+
+    border-radius:25px;
+
+
+    box-shadow:var(--shadow);
+
+
+}
+
+
+
+.quiz-title {
+
+
+    text-align:center;
+
+
+    color:var(--python-yellow);
+
+
+    font-size:32px;
+
+
+}
+
+
+
+/* Question Card */
+
+
+.quiz-card {
+
+
+    margin-top:25px;
+
+
+    padding:25px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+
+    rgba(255,255,255,.08);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+}
+
+
+
+.quiz-card h3 {
+
+
+    color:white;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+/* Options */
+
+
+.quiz-option {
+
+
+    display:block;
+
+
+    width:100%;
+
+
+    margin:12px 0;
+
+
+    padding:14px;
+
+
+    text-align:left;
+
+
+    border:none;
+
+
+    border-radius:15px;
+
+
+    cursor:pointer;
+
+
+    color:white;
+
+
+    background:
+
+
+    rgba(255,255,255,.12);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.quiz-option:hover {
+
+
+    background:
+
+
+    rgba(58,168,255,.35);
+
+
+    transform:translateX(8px);
+
+
+}
+
+
+
+.quiz-option.correct {
+
+
+    background:
+
+    rgba(67,233,123,.4);
+
+
+}
+
+
+
+.quiz-option.wrong {
+
+
+    background:
+
+    rgba(255,107,107,.4);
+
+
+}
+
+
+
+/* Quiz Submit */
+
+
+.quiz-submit {
+
+
+    margin-top:20px;
+
+
+    padding:12px 35px;
+
+
+    border:none;
+
+
+    border-radius:30px;
+
+
+    cursor:pointer;
+
+
+    color:white;
+
+
+    font-weight:bold;
+
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    var(--forest-green),
+
+    var(--magic-blue)
+
+    );
+
+
+}
+
+
+
+/* =========================================================
+   XP REWARD MAGIC
+   ========================================================= */
+
+
+.reward-popup {
+
+
+    position:fixed;
+
+
+    top:50%;
+
+
+    left:50%;
+
+
+    transform:
+
+    translate(-50%,-50%);
+
+
+    padding:35px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+
+    rgba(20,25,55,.95);
+
+
+    border:
+
+    3px solid var(--gold);
+
+
+    text-align:center;
+
+
+    display:none;
+
+
+    z-index:1000;
+
+
+    box-shadow:
+
+    0 0 40px var(--gold);
+
+
+}
+
+
+
+.reward-popup h2 {
+
+
+    color:var(--gold);
+
+
+}
+
+
+
+/* =========================================================
+   BADGE GALLERY
+   ========================================================= */
+
+
+.badge-gallery {
+
+
+    margin-top:40px;
+
+
+    display:flex;
+
+
+    flex-wrap:wrap;
+
+
+    justify-content:center;
+
+
+    gap:20px;
+
+
+}
+
+
+
+.badge {
+
+
+    width:110px;
+
+
+    height:110px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    flex-direction:column;
+
+
+    background:
+
+
+    linear-gradient(
+
+    135deg,
+
+    var(--gold),
+
+    var(--magic-purple)
+
+    );
+
+
+    box-shadow:
+
+    0 0 25px rgba(255,204,51,.5);
+
+
+}
+
+
+
+.badge span {
+
+
+    font-size:35px;
+
+
+}
+
+
+
+.badge p {
+
+
+    font-size:12px;
+
+
+}
+
+
+
+/* =========================================================
+   COMPLETION MESSAGE
+   ========================================================= */
+
+
+.complete-banner {
+
+
+    margin-top:40px;
+
+
+    padding:25px;
+
+
+    text-align:center;
+
+
+    border-radius:20px;
+
+
+    background:
+
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(67,233,123,.25),
+
+    rgba(58,168,255,.25)
+
+    );
+
+
+}
+
+
+
+.complete-banner h2 {
+
+
+    color:var(--forest-green);
+
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+
+@media(max-width:700px){
+
+
+.code-chamber,
+.quiz-section{
+
+
+padding:15px;
+
+
+}
+
+
+
+.code-editor{
+
+
+font-size:14px;
+
+
+min-height:220px;
+
+
+}
+
+
+
+.badge{
+
+
+width:90px;
+
+height:90px;
+
+
+}
+
 
 }
