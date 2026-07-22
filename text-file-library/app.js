@@ -1091,3 +1091,56 @@ document.addEventListener(
 
 
 });
+// ==========================================
+// MAGIC TILE SECTION SWITCHING
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const tiles = document.querySelectorAll(".magicTile");
+    const sections = document.querySelectorAll(".lessonContent");
+
+
+    tiles.forEach(tile => {
+
+        tile.addEventListener("click", () => {
+
+
+            // Remove active from all tiles
+            tiles.forEach(t => {
+                t.classList.remove("active");
+            });
+
+
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove("active");
+            });
+
+
+            // Activate clicked tile
+            tile.classList.add("active");
+
+
+            // Show selected section
+            const target =
+            tile.getAttribute("data-section");
+
+
+            const selected =
+            document.getElementById(target);
+
+
+            if(selected){
+
+                selected.classList.add("active");
+
+            }
+
+
+        });
+
+    });
+
+
+});
