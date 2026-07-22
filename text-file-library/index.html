@@ -4,223 +4,451 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Python Quest | Text File Library</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="style.css">
+<title>
+Python Quest | The Library of Living Scrolls
+</title>
+
+<link rel="stylesheet"
+href="../css/style.css">
+
+<link rel="stylesheet"
+href="style.css">
 
 </head>
 
 <body>
 
-<!-- =========================================
+<!-- ==========================================
                 HEADER
-========================================== -->
+=========================================== -->
 
-<header>
+<header class="pq-header">
 
 <div class="logo">
-📜 Python Quest
+
+🐍 Python Quest
+
 </div>
 
 <div class="playerStats">
 
 <div class="stat">
-⭐ <span id="xp">0</span>
+⭐
+<span id="xp">0</span>
 </div>
 
 <div class="stat">
-🪙 <span id="coins">0</span>
+🪙
+<span id="coins">0</span>
 </div>
 
 <div class="stat">
-🏆 <span id="badges">0</span>
+🏆
+<span id="badges">0</span>
 </div>
 
 <div class="stat">
-Level <span id="playerLevel">1</span>
+
+Level
+
+<span id="playerLevel">
+
+1
+
+</span>
+
 </div>
 
 </div>
 
 </header>
 
-<!-- =========================================
-              LESSON HEADER
-========================================== -->
+<!-- ==========================================
+              HERO SECTION
+=========================================== -->
 
-<section class="lessonHeader">
+<section class="heroWorld">
 
-<h1>📜 Text File Handling Adventure</h1>
+<div class="heroOverlay">
 
-<p>
-Master Python Text File Handling through comics,
-animation, notes, coding practice and quizzes.
-</p>
+<h1>
 
-</section>
+📜 The Library of Living Scrolls
 
-<!-- =========================================
-                 LESSON TILES
-========================================== -->
-
-<section class="tabsContainer">
-
-<button class="tab active">
-<span class="emoji"> 📜 </span>
-  Legend Scroll
-</button>
-
-<button class="tab">
-<span class="emoji">🔮 </span>
- Crystal Vision
-</button>
-
-<button class="tab">
-<span class="emoji">📚</span>
-Spell Book
-</button>
-
-<button class="tab">
-<span class="emoji">💻</span>
-Spell Forge
-</button>
-
-<button class="tab" data-target="monsterSection">
-<span class="emoji">⚔️</span>
-Monster Hunt
-</button>
-
-<button class="tab">
-<span class="emoji">💎</span>
-Treasure Vault
-</button>
-
-</section>
-<!-- =========================================
-             PROGRESS BAR
-========================================== -->
-
-<div class="lessonProgress">
-
-<div class="progress">
-
-<div class="progress-bar"
-id="lessonProgressBar">
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================================
-          MAIN LESSON CONTENT
-========================================== -->
-
-<main class="lessonContainer">
-
-  <!-- =====================================
-            STORY INTRODUCTION
-===================================== -->
-
-<section id="storySection" class="lessonContent active">
-
-<div class="storyCard">
-
-<div class="masterImage">
-🧙‍♂️
-</div>
-
-<h1>Master Pyro</h1>
-
-<h3>The Grand Python Magician</h3>
+</h1>
 
 <p>
 
-Welcome, young explorer...
+Every magical scroll hides
+a powerful Python spell.
 
-Python is not merely a programming language.
+Explore...
 
-It is magic.
+Learn...
 
-Every command is a spell.
+Battle Bugs...
 
-Every bug is a monster.
+Collect Treasures...
 
-Every project is an adventure.
-
-Today you begin your journey into the
-<strong>Library of Living Scrolls</strong>.
-
-Will you help Dino master the magic of Text Files?
+Become the next Python Master.
 
 </p>
+
+<div class="heroButtons">
 
 <button
-id="beginAdventure"
-class="btn btn-primary">
+class="btn btn-primary"
+id="startJourney">
 
 ✨ Begin Adventure
 
 </button>
 
+<button
+class="btn btn-secondary">
+
+🗺 Return to Adventure Hub
+
+</button>
+
+</div>
+
 </div>
 
 </section>
-<!-- =====================================
-            COMIC
-===================================== -->
+
+<!-- ==========================================
+          MASTER PYRO MESSAGE
+=========================================== -->
+
+<section class="masterSection">
+
+<div class="masterCard">
+
+<div class="masterAvatar">
+
+🐍
+
+</div>
+
+<div class="masterContent">
+
+<h2>
+
+Master Pyro
+
+</h2>
+
+<h3>
+
+Guardian of the Library
+
+</h3>
+
+<p>
+
+"Young explorer...
+
+Every bug defeated brings wisdom.
+
+Every scroll mastered unlocks
+a new magical ability.
+
+Today's quest is to master
+Text File Handling."
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+            LESSON PROGRESS
+=========================================== -->
+
+<section class="lessonProgress">
+
+<h3>
+
+Adventure Progress
+
+</h3>
+
+<div class="progress">
+
+<div
+id="lessonProgressBar"
+class="progress-bar">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+            MAGIC NAVIGATION
+=========================================== -->
+
+<section class="magicMenu">
+
+<div class="magicGrid">
+  <!-- ==========================================
+        MAGIC TILES
+=========================================== -->
+
+<button class="magicTile active" data-section="storySection">
+
+<div class="tileIcon">
+
+📜
+
+</div>
+
+<h3>
+
+Legend Scroll
+
+</h3>
+
+<p>
+
+Begin the magical story
+
+</p>
+
+</button>
+
+<button class="magicTile" data-section="animationSection">
+
+<div class="tileIcon">
+
+🔮
+
+</div>
+
+<h3>
+
+Crystal Vision
+
+</h3>
+
+<p>
+
+Watch Master Pyro's magic
+
+</p>
+
+</button>
+
+<button class="magicTile" data-section="notesSection">
+
+<div class="tileIcon">
+
+📖
+
+</div>
+
+<h3>
+
+Spell Book
+
+</h3>
+
+<p>
+
+Learn magical concepts
+
+</p>
+
+</button>
+
+<button class="magicTile" data-section="codingSection">
+
+<div class="tileIcon">
+
+✨
+
+</div>
+
+<h3>
+
+Spell Forge
+
+</h3>
+
+<p>
+
+Create powerful Python spells
+
+</p>
+
+</button>
+
+<button class="magicTile" data-section="monsterSection">
+
+<div class="tileIcon">
+
+⚔️
+
+</div>
+
+<h3>
+
+Monster Hunt
+
+</h3>
+
+<p>
+
+Defeat dangerous Bug Monsters
+
+</p>
+
+</button>
+
+<button class="magicTile" data-section="rewardSection">
+
+<div class="tileIcon">
+
+💎
+
+</div>
+
+<h3>
+
+Treasure Vault
+
+</h3>
+
+<p>
+
+Collect magical rewards
+
+</p>
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+        MAIN CONTENT AREA
+=========================================== -->
+
+<main class="lessonContainer">
+
+<!-- ==========================================
+        LEGEND SCROLL
+=========================================== -->
 
 <section
-id="comicSection"
+id="storySection"
 class="lessonContent active">
 
-<h2>📖 Comic Adventure</h2>
+<div class="storyWrapper">
 
-<div id="flipbook"></div>
+<div class="storyBanner">
 
-<div class="lessonButtons">
+<h2>
+
+📜 Legend Scroll
+
+</h2>
+
+<p>
+
+Every adventure begins with a story...
+
+</p>
+
+</div>
+
+<div class="storyCard">
+
+<div class="storyImage">
+
+🐍
+
+</div>
+
+<div class="storyText">
+
+<h2>
+
+Welcome, Explorer!
+
+</h2>
+
+<p>
+
+Hidden deep inside the Library of Living Scrolls
+lies an ancient collection of magical books.
+
+Each scroll contains Python spells that help
+programmers solve real-world problems.
+
+Today, Master Pyro has invited Dino to discover
+the secret power of Text File Handling.
+
+Will you accept this quest?
+
+</p>
 
 <button
-id="previousComic"
-class="btn btn-warning">
+class="btn btn-primary"
+id="beginAdventure">
 
-◀ Previous
-
-</button>
-
-<button
-id="nextComic"
-class="btn btn-primary">
-
-Next ▶
+✨ Open the First Scroll
 
 </button>
 
 </div>
 
+</div>
+
+</div>
+
 </section>
 
-<!-- =====================================
-            ANIMATION
-===================================== -->
+<!-- ==========================================
+        CRYSTAL VISION
+=========================================== -->
 
 <section
 id="animationSection"
 class="lessonContent">
 
-<h2>🎬 Master Pyro's Magic Lesson</h2>
+<div class="sectionHeader">
 
-<div class="videoContainer">
+<h2>
+
+🔮 Crystal Vision
+
+</h2>
+
+<p>
+
+Watch the magical lesson unfold.
+
+</p>
+
+</div>
+
+<div class="videoCard">
 
 <video
 id="lessonVideo"
 controls
 controlsList="nodownload"
-preload="metadata"
 poster="images/video-thumbnail.png">
 
 <source
@@ -233,20 +461,18 @@ Your browser does not support HTML5 video.
 
 </div>
 
-<div class="videoInfo">
+<div class="videoMission">
 
-<h3>📜 Mission</h3>
+<h3>
 
-<p>
+🎯 Mission
 
-Watch how Master Pyro teaches Dino to open,
-read, write and close magical text scrolls.
-
-</p>
+</h3>
 
 <p>
 
-🎁 Reward : +50 XP
+Observe carefully how Master Pyro teaches Dino
+to read, write and manage magical scrolls.
 
 </p>
 
@@ -254,45 +480,101 @@ read, write and close magical text scrolls.
 
 </section>
 
-<!-- =====================================
-            NOTES
-===================================== -->
+  <!-- ==========================================
+            SPELL BOOK
+=========================================== -->
 
 <section
 id="notesSection"
 class="lessonContent">
 
-<h2>📚 Quick Notes</h2>
+<div class="sectionHeader">
 
-<div class="notesGrid">
+<h2>
 
-<div class="noteCard">
+📖 Spell Book
 
-<h3>Opening a File</h3>
+</h2>
 
-<pre>
+<p>
 
-file=open("demo.txt","r")
+Study the magical spells before using them.
 
-</pre>
-
-</div>
-
-<div class="noteCard">
-
-<h3>Writing</h3>
-
-<pre>
-
-file.write("Hello")
-
-</pre>
+</p>
 
 </div>
 
-<div class="noteCard">
+<div class="spellGrid">
 
-<h3>Reading</h3>
+<div class="spellCard">
+
+<div class="spellIcon">
+
+📂
+
+</div>
+
+<h3>
+
+Opening a Scroll
+
+</h3>
+
+<pre>
+
+file = open("magic.txt","r")
+
+</pre>
+
+<p>
+
+Unlock a magical scroll so Python can read it.
+
+</p>
+
+</div>
+
+<div class="spellCard">
+
+<div class="spellIcon">
+
+✍️
+
+</div>
+
+<h3>
+
+Writing a Spell
+
+</h3>
+
+<pre>
+
+file.write("Hello Wizard")
+
+</pre>
+
+<p>
+
+Store new magical knowledge inside a scroll.
+
+</p>
+
+</div>
+
+<div class="spellCard">
+
+<div class="spellIcon">
+
+📜
+
+</div>
+
+<h3>
+
+Reading a Scroll
+
+</h3>
 
 <pre>
 
@@ -300,11 +582,27 @@ print(file.read())
 
 </pre>
 
+<p>
+
+Reveal every magical word hidden inside.
+
+</p>
+
 </div>
 
-<div class="noteCard">
+<div class="spellCard">
 
-<h3>Closing</h3>
+<div class="spellIcon">
+
+🔒
+
+</div>
+
+<h3>
+
+Closing a Scroll
+
+</h3>
 
 <pre>
 
@@ -312,126 +610,332 @@ file.close()
 
 </pre>
 
+<p>
+
+Always close the magical scroll after use.
+
+</p>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- =====================================
-            CODING
-===================================== -->
+<!-- ==========================================
+            SPELL FORGE
+=========================================== -->
 
 <section
 id="codingSection"
 class="lessonContent">
 
-<h2>💻 Coding Lab</h2>
-
-<textarea
-id="pythonCode"
-rows="15">
-
-print("Hello Python Quest")
-
-</textarea>
-
-<br><br>
-
-<button
-id="runCode"
-class="btn btn-success">
-
-▶ Run Code
-
-</button>
-
-<h3>Output</h3>
-
-<pre id="output">
-
-Output will appear here...
-
-</pre>
-
-</section>
-
-<!-- =====================================
-                QUIZ
-===================================== -->
-
-<section id="monsterSection" class="lessonContent">
-<div class="hunt-container">
-
-<h2>🐉 Monster Hunt</h2>
-
-<div class="monster-progress">
-<span id="monsterNumber">Monster 1 of 10</span>
-<div class="progress">
-<div id="monsterProgress" class="progress-fill"></div>
-</div>
-</div>
-
-<div class="monster-card">
-
-<h3 id="monsterTitle">🐛 Bug Monster I</h3>
-
-<p id="questionText"></p>
-
-<div id="optionsContainer"></div>
-
-</div>
-
-<div class="hunt-buttons">
-
-<button id="prevBtn" onclick="previousMonster()" disabled>
-⬅ Previous Monster
-</button>
-
-<button id="nextBtn" onclick="nextMonster()">
-Next Monster ➜
-</button>
-
-<button id="finishBtn" onclick="finishHunt()" style="display:none;">
-⚔️ Defeat Final Monster
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-            REWARD
-===================================== -->
-
-<section
-id="rewardSection"
-class="lessonContent">
-
-<div class="rewardBox">
+<div class="sectionHeader">
 
 <h2>
 
-🏆 Congratulations!
+✨ Spell Forge
 
 </h2>
 
 <p>
 
-Complete this lesson to earn
-
-XP, Coins and a Badge.
+Forge your own Python magic.
 
 </p>
+
+</div>
+
+<div class="forgeContainer">
+
+<div class="editorPanel">
+
+<h3>
+
+🧙 Python Spell Editor
+
+</h3>
+
+<textarea
+id="pythonCode"
+spellcheck="false"
+rows="16">
+
+# Write your magical Python spell
+
+print("Welcome to Python Quest!")
+
+</textarea>
+
+<div class="editorButtons">
+
+<button
+id="runCode"
+class="btn btn-success">
+
+▶ Cast Spell
+
+</button>
+
+<button
+id="clearCode"
+class="btn btn-warning">
+
+🧹 Clear Spell
+
+</button>
+
+</div>
+
+</div>
+
+<div class="outputPanel">
+
+<h3>
+
+✨ Magic Crystal Output
+
+</h3>
+
+<pre id="output">
+
+Your magical output will appear here...
+
+</pre>
+
+</div>
+
+</div>
+
+<div class="challengeBox">
+
+<h3>
+
+🎯 Apprentice Challenge
+
+</h3>
+
+<p>
+
+Create a Python program that opens a file,
+writes your name into it,
+and then reads it back.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+            MONSTER HUNT
+=========================================== -->
+
+<section
+id="monsterSection"
+class="lessonContent">
+
+<div class="sectionHeader">
+
+<h2>
+
+⚔️ Monster Hunt
+
+</h2>
+
+<p>
+
+Defeat every Bug Monster to unlock the Treasure Vault.
+
+</p>
+
+</div>
+
+<div class="monsterArena">
+
+<div class="monsterStatus">
+
+<div class="monsterInfo">
+
+<h3 id="monsterTitle">
+
+🐛 Bug Monster I
+
+</h3>
+
+<p id="monsterNumber">
+
+Monster 1 of 4
+
+</p>
+
+</div>
+
+<div class="monsterHealth">
+
+<div class="progress">
+
+<div
+id="monsterProgress"
+class="progress-bar">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="monsterCard">
+
+<h3>
+
+🎯 Your Challenge
+
+</h3>
+
+<p id="questionText">
+
+Loading...
+
+</p>
+
+<div id="optionsContainer">
+
+</div>
+
+</div>
+
+<div class="huntButtons">
+
+<button
+id="prevBtn"
+class="btn btn-warning"
+onclick="previousMonster()">
+
+⬅ Previous Monster
+
+</button>
+
+<button
+id="nextBtn"
+class="btn btn-primary"
+onclick="nextMonster()">
+
+⚔️ Attack Monster
+
+</button>
+
+<button
+id="finishBtn"
+class="btn btn-success"
+style="display:none;"
+onclick="finishHunt()">
+
+👑 Defeat Final Boss
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+            TREASURE VAULT
+=========================================== -->
+
+<section
+id="rewardSection"
+class="lessonContent">
+
+<div class="treasureVault">
+
+<div class="vaultIcon">
+
+💎
+
+</div>
+
+<h2>
+
+Treasure Vault
+
+</h2>
+
+<p>
+
+Every defeated Bug Monster drops magical rewards.
+
+Collect them to become a true Python Wizard.
+
+</p>
+
+<div class="rewardGrid">
+
+<div class="rewardCard">
+
+⭐
+
+<h3>
+
+XP
+
+</h3>
+
+<p>
+
+Knowledge Points
+
+</p>
+
+</div>
+
+<div class="rewardCard">
+
+🪙
+
+<h3>
+
+Coins
+
+</h3>
+
+<p>
+
+Magic Coins
+
+</p>
+
+</div>
+
+<div class="rewardCard">
+
+🏅
+
+<h3>
+
+Badges
+
+</h3>
+
+<p>
+
+Achievement Medals
+
+</p>
+
+</div>
+
+</div>
 
 <button
 id="claimReward"
 class="btn btn-success">
 
-Claim Reward
+🎁 Open Treasure Chest
 
 </button>
 
@@ -441,9 +945,9 @@ Claim Reward
 
 </main>
 
-<!-- =====================================
-      PREVIOUS / NEXT LESSON
-===================================== -->
+<!-- ==========================================
+        LESSON NAVIGATION
+=========================================== -->
 
 <footer class="lessonFooter">
 
@@ -451,23 +955,71 @@ Claim Reward
 id="previousBtn"
 class="btn btn-warning">
 
-⬅ Previous
+⬅ Previous Lesson
 
 </button>
 
 <button
-id="nextBtn"
+id="nextLessonBtn"
 class="btn btn-primary">
 
-Next ➜
+Continue Adventure ➜
 
 </button>
 
 </footer>
 
-<!-- =====================================
-            JAVASCRIPT
-===================================== -->
+<!-- ==========================================
+        FOOTER
+=========================================== -->
+
+<footer class="siteFooter">
+
+<div class="footerContent">
+
+<h3>
+
+🐍 Python Quest
+
+</h3>
+
+<p>
+
+Crafted with ❤️ for young Python Wizards
+
+</p>
+
+<p>
+
+Developed by
+
+<strong>
+
+Amit Yerpude
+
+</strong>
+
+</p>
+
+<p>
+
+PGT Computer Science
+
+</p>
+
+<p>
+
+PM SHRI Kendriya Vidyalaya Dongargarh
+
+</p>
+
+</div>
+
+</footer>
+
+<!-- ==========================================
+        JAVASCRIPT
+=========================================== -->
 
 <script src="quiz.js"></script>
 
