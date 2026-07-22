@@ -56,43 +56,36 @@ let userAnswers=[];
 
 function loadMonster(){
 
-let q=monsterQuestions[currentMonster];
+    let q = monsterQuestions[currentMonster];
 
-document.getElementById("monsterTitle").innerHTML=q.monster;
+    document.getElementById("monsterTitle").textContent = q.monster;
+    document.getElementById("questionText").textContent = q.question;
 
-document.getElementById("questionText").innerHTML=q.question;
+    document.getElementById("monsterNumber").textContent =
+        `Monster ${currentMonster + 1} of ${monsterQuestions.length}`;
 
-document.getElementById("monsterNumber").innerHTML=
+    document.getElementById("monsterProgress").style.width =
+        ((currentMonster + 1) / monsterQuestions.length * 100) + "%";
 
-`Monster ${currentMonster+1} of ${monsterQuestions.length}`;
+    let html = "";
 
-document.getElementById("monsterProgress").style.width=
+    q.options.forEach((opt, index) => {
 
-((currentMonster+1)/monsterQuestions.length*100)+"%";
+        html += `
+        <label class="option">
+            <input type="radio"
+                   name="monster"
+                   value="${index}"
+                   ${userAnswers[currentMonster] == index ? "checked" : ""}>
+            <span>${opt}</span>
+        </label>
+        `;
 
-let html="";
+    });
 
-q.options.forEach((opt,index)=>{
+    document.getElementById("optionsContainer").innerHTML = html;
 
-html+=`
-
-<label class="option">
-
-<input type="radio"
-
-name="monster"
-
-value="${index}"
-
-${userAnswers[currentMonster]==index?"checked":""}>
-
-${opt}
-
-</label>
-
-`;
-
-});
+}
 
 document.getElementById("optionsContainer").innerHTML=html;
 
