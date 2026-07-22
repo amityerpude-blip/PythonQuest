@@ -2013,3 +2013,18 @@ transform:translateY(0);
 
 
 }
+
+.lessonContent{
+
+    display:none;
+
+}
+
+
+.lessonContent.active{
+
+    display:block;
+
+    animation:fadeIn .5s ease;
+
+}
