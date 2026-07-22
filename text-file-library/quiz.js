@@ -54,8 +54,6 @@ let currentMonster=0;
 
 let userAnswers=[];
 
-loadMonster();
-
 function loadMonster(){
 
 let q=monsterQuestions[currentMonster];
