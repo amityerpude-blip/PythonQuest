@@ -1101,28 +1101,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".lessonContent");
 
 
+    // Show first section initially
+    sections.forEach(section => {
+        section.classList.remove("active");
+    });
+
+    document
+    .getElementById("storySection")
+    .classList.add("active");
+
+
     tiles.forEach(tile => {
 
         tile.addEventListener("click", () => {
 
 
-            // Remove active from all tiles
             tiles.forEach(t => {
                 t.classList.remove("active");
             });
 
 
-            // Hide all sections
             sections.forEach(section => {
                 section.classList.remove("active");
             });
 
 
-            // Activate clicked tile
             tile.classList.add("active");
 
 
-            // Show selected section
             const target =
             tile.getAttribute("data-section");
 
@@ -1141,6 +1147,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
-
 
 });
