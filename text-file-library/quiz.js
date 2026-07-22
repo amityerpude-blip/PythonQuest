@@ -2,7 +2,8 @@
 // Python Quest
 // Monster Hunt Quiz System
 // =====================================================
-
+alert("quiz.js loaded");
+console.log("quiz.js loaded");
 const monsterQuestions = [
 
 {
