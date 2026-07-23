@@ -114,7 +114,7 @@ function previousComic() {
         INITIALIZE
 ====================================================*/
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
 
     console.log("📖 Flipbook Initialized");
 
@@ -124,33 +124,19 @@ window.onload = function () {
     const previous = document.getElementById("previousComic");
 
     if (next) {
-
         next.addEventListener("click", nextComic);
-
     }
 
     if (previous) {
-
         previous.addEventListener("click", previousComic);
-
     }
-
-    /* Keyboard Support */
 
     document.addEventListener("keydown", function (e) {
 
-        if (e.key === "ArrowRight") {
+        if (e.key === "ArrowRight") nextComic();
 
-            nextComic();
-
-        }
-
-        if (e.key === "ArrowLeft") {
-
-            previousComic();
-
-        }
+        if (e.key === "ArrowLeft") previousComic();
 
     });
 
-};
+});
